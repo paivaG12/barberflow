@@ -761,3 +761,26 @@ body.light-mode .header-button {
 body.light-mode .header-button:hover {
     background-color: #2a2a2a;
 }
+/* ===========================
+   BOTÕES PRETOS - MODO CLARO
+=========================== */
+
+body.light-mode .header-button,
+body.light-mode .card-button,
+body.light-mode .button-light {
+    background: #111111 !important;
+    color: #ffffff !important;
+}
+
+body.light-mode .header-button:hover,
+body.light-mode .card-button:hover,
+body.light-mode .button-light:hover {
+    background: #222222 !important;
+    color: #ffffff !important;
+}
+
+body.light-mode .header-button *,
+body.light-mode .card-button *,
+body.light-mode .button-light * {
+    color: #ffffff !important;
+}
