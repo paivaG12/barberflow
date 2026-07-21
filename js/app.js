@@ -1,12 +1,16 @@
 function getCurrentBarbershop() {
-
     return DATABASE.barbershops[0];
-
 }
 
-const shop = getCurrentBarbershop();
+function updateBarbershopPage() {
+    const shop = getCurrentBarbershop();
+    const heroTitle = document.getElementById("hero-title");
 
-console.log(shop);
-console.log(shop.name);
-console.log(shop.phone);
-console.log(shop.address);
+    if (!heroTitle) {
+        return;
+    }
+
+    heroTitle.textContent = shop.name;
+}
+
+updateBarbershopPage();
