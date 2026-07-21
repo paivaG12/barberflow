@@ -8,9 +8,16 @@
         content="width=device-width, initial-scale=1.0"
     >
 
+    <meta
+        name="description"
+        content="BarberFlow, plataforma de agendamento para barbearias."
+    >
+
     <title>BarberFlow</title>
 
     <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/landing.css">
+
     <script src="./js/theme.js" defer></script>
 </head>
 
@@ -22,202 +29,225 @@
             </a>
 
             <nav class="navigation">
-                <a href="#inicio">Início</a>
+                <a href="#como-funciona">Como funciona</a>
                 <a href="#recursos">Recursos</a>
-                <a href="#sobre">Sobre</a>
+                <a href="#planos">Planos</a>
             </nav>
 
             <div class="header-actions">
-    <button
-        type="button"
-        class="theme-button"
-        id="theme-button"
-        aria-label="Ativar modo claro"
-    >
-        <span id="theme-icon">☀</span>
-    </button>
+                <button
+                    type="button"
+                    class="theme-button"
+                    id="theme-button"
+                    aria-label="Alterar tema"
+                >
+                    <span id="theme-icon">☀</span>
+                </button>
 
-    <a href="#agendar" class="header-button">
-        Agendar
-    </a>
-</div>
+                <a href="./pages/login.html" class="header-login">
+                    Entrar
+                </a>
+
+                <a href="./pages/cadastro.html" class="header-button">
+                    Criar barbearia
+                </a>
+            </div>
         </div>
     </header>
 
     <main>
-        <section class="hero" id="inicio">
-            <div class="container hero-content">
-                <div class="hero-text">
+        <section class="platform-hero">
+            <div class="container platform-hero-content">
+                <div class="platform-hero-text">
                     <span class="hero-label">
-                        Agendamento simples e rápido
+                        Plataforma para barbearias
                     </span>
 
-                    <h1 id="hero-title">
-                        Seu próximo corte começa aqui.
+                    <h1>
+                        Sua barbearia online, organizada e pronta para crescer.
                     </h1>
 
                     <p>
-                        Escolha o serviço, o profissional e o melhor horário
-                        para você. Tudo de forma simples, rápida e moderna.
+                        Cadastre sua barbearia, divulgue seu link exclusivo e
+                        receba agendamentos de forma simples e profissional.
                     </p>
 
                     <div class="hero-actions">
-                        <a href="#agendar" class="button button-primary">
-                            Agendar horário
+                        <a
+                            href="./pages/cadastro.html"
+                            class="button button-primary"
+                        >
+                            Cadastrar minha barbearia
                         </a>
 
-                        <a href="#recursos" class="button button-secondary">
-                            Conhecer a barbearia
+                        <a
+                            href="./pages/barbearia.html?barbearia=jl-barbearia"
+                            class="button button-secondary"
+                        >
+                            Ver página de demonstração
                         </a>
                     </div>
 
-                    <div class="hero-information">
-                        <div>
-                            <strong>+500</strong>
-                            <span>clientes atendidos</span>
-                        </div>
-
-                        <div>
-                            <strong>4,9</strong>
-                            <span>avaliação média</span>
-                        </div>
-
-                        <div>
-                            <strong>100%</strong>
-                            <span>agendamento online</span>
-                        </div>
+                    <div class="platform-benefits">
+                        <span>Sem instalação</span>
+                        <span>Link exclusivo</span>
+                        <span>Agendamento online</span>
                     </div>
                 </div>
 
-                <div class="hero-card">
-                    <div class="card-top">
-                        <div>
-                            <span class="card-label">Próximo horário</span>
-                            <h2>Hoje, 15:30</h2>
+                <div class="platform-preview">
+                    <div class="preview-browser">
+                        <div class="preview-browser-top">
+                            <div class="preview-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+
+                            <div class="preview-address">
+                                barberflow.com/sua-barbearia
+                            </div>
                         </div>
 
-                        <span class="status">Disponível</span>
+                        <div class="preview-content">
+                            <div class="preview-banner">
+                                <span>JL Barbearia</span>
+                            </div>
+
+                            <div class="preview-cards">
+                                <div>
+                                    <small>Próximo horário</small>
+                                    <strong>Hoje, 15:30</strong>
+                                </div>
+
+                                <div>
+                                    <small>Serviços</small>
+                                    <strong>8 disponíveis</strong>
+                                </div>
+                            </div>
+
+                            <div class="preview-service">
+                                <span>Corte masculino</span>
+                                <strong>R$ 35</strong>
+                            </div>
+
+                            <div class="preview-button">
+                                Agendar horário
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="professional">
-                        <div class="professional-avatar">
-                            JP
-                        </div>
-
-                        <div>
-                            <strong>João Pedro</strong>
-                            <span>Barbeiro profissional</span>
-                        </div>
-                    </div>
-
-                    <div class="service">
-                        <div class="service-icon">
-                            ✂
-                        </div>
-
-                        <div class="service-information">
-                            <strong>Corte masculino</strong>
-                            <span>Duração aproximada: 40 minutos</span>
-                        </div>
-
-                        <strong class="service-price">
-                            R$ 35
-                        </strong>
-                    </div>
-
-                    <a href="#agendar" class="card-button">
-                        Reservar este horário
-                    </a>
                 </div>
             </div>
         </section>
 
-        <section class="features" id="recursos">
+        <section class="platform-section" id="como-funciona">
             <div class="container">
                 <div class="section-heading">
-                    <span>Experiência completa</span>
+                    <span>Como funciona</span>
 
                     <h2>
-                        Tudo pensado para facilitar seu agendamento
+                        Do cadastro ao primeiro agendamento em poucos passos
                     </h2>
-
-                    <p>
-                        Encontre os serviços, profissionais e horários disponíveis
-                        em poucos passos.
-                    </p>
                 </div>
 
-                <div class="features-grid">
-                    <article class="feature-card">
-                        <div class="feature-icon">01</div>
-
-                        <h3>Escolha o serviço</h3>
-
+                <div class="steps-grid">
+                    <article class="step-card">
+                        <span>01</span>
+                        <h3>Cadastre sua barbearia</h3>
                         <p>
-                            Consulte os serviços disponíveis, valores e duração
-                            antes de realizar seu agendamento.
+                            Informe nome, endereço, horários, contatos e imagens.
                         </p>
                     </article>
 
-                    <article class="feature-card">
-                        <div class="feature-icon">02</div>
-
-                        <h3>Escolha o profissional</h3>
-
+                    <article class="step-card">
+                        <span>02</span>
+                        <h3>Adicione sua equipe e serviços</h3>
                         <p>
-                            Veja os profissionais da equipe e selecione quem
-                            realizará o seu atendimento.
+                            Cadastre barbeiros, serviços, preços e duração.
                         </p>
                     </article>
 
-                    <article class="feature-card">
-                        <div class="feature-icon">03</div>
-
-                        <h3>Escolha o horário</h3>
-
+                    <article class="step-card">
+                        <span>03</span>
+                        <h3>Divulgue seu link</h3>
                         <p>
-                            Confira os horários disponíveis e reserve o que
-                            funciona melhor para você.
+                            Envie o endereço exclusivo para seus clientes.
+                        </p>
+                    </article>
+
+                    <article class="step-card">
+                        <span>04</span>
+                        <h3>Receba agendamentos</h3>
+                        <p>
+                            O cliente escolhe profissional, serviço, data e hora.
                         </p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section class="about" id="sobre">
-            <div class="container about-content">
-                <div>
-                    <span class="section-label">Sobre a plataforma</span>
+        <section class="platform-section platform-section-soft" id="recursos">
+            <div class="container">
+                <div class="section-heading">
+                    <span>Recursos</span>
 
                     <h2>
-                        Um sistema profissional para barbearias modernas
+                        Tudo que uma barbearia precisa em um só lugar
                     </h2>
                 </div>
 
-                <p>
-                    O BarberFlow está sendo desenvolvido para permitir que cada
-                    barbearia tenha sua própria página de agendamento, serviços,
-                    profissionais e horários disponíveis.
-                </p>
+                <div class="resource-grid">
+                    <article class="resource-card">
+                        <h3>Página personalizada</h3>
+                        <p>
+                            Logo, banner, fotos, serviços, equipe e contatos.
+                        </p>
+                    </article>
+
+                    <article class="resource-card">
+                        <h3>Agenda organizada</h3>
+                        <p>
+                            Horários disponíveis e agendamentos atualizados.
+                        </p>
+                    </article>
+
+                    <article class="resource-card">
+                        <h3>Painel administrativo</h3>
+                        <p>
+                            Controle de serviços, profissionais e clientes.
+                        </p>
+                    </article>
+
+                    <article class="resource-card">
+                        <h3>Link exclusivo</h3>
+                        <p>
+                            Um endereço próprio para divulgar nas redes sociais.
+                        </p>
+                    </article>
+                </div>
             </div>
         </section>
 
-        <section class="booking-call" id="agendar">
-            <div class="container booking-content">
+        <section class="platform-cta" id="planos">
+            <div class="container platform-cta-content">
                 <div>
-                    <span>Pronto para começar?</span>
+                    <span>Comece a organizar sua barbearia</span>
 
-                    <h2>Agende seu próximo horário</h2>
+                    <h2>
+                        Crie sua página e facilite seus agendamentos
+                    </h2>
 
                     <p>
-                        A área completa de agendamento será desenvolvida nas
-                        próximas etapas.
+                        Nesta primeira versão, o cadastro será demonstrativo.
                     </p>
                 </div>
 
-                <button type="button" class="button button-light">
-                    Em breve
-                </button>
+                <a
+                    href="./pages/cadastro.html"
+                    class="button button-light"
+                >
+                    Criar minha barbearia
+                </a>
             </div>
         </section>
     </main>
@@ -229,12 +259,9 @@
             </a>
 
             <p>
-                Sistema de agendamento para barbearias.
+                Plataforma de agendamento para barbearias.
             </p>
         </div>
     </footer>
-    <script src="./js/theme.js" defer></script>
-<script src="./js/database.js"></script>
-<script src="./js/app.js"></script>
 </body>
 </html>
