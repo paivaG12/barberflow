@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     const servicesList = document.querySelector("#services-list");
+
     const professionalsList = document.querySelector(
         "#professionals-list"
     );
@@ -45,11 +46,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const slugStatus = document.querySelector("#slug-status");
 
     const customColorInput = document.querySelector("#custom-color");
+
     const customColorValue = document.querySelector(
         "#custom-color-value"
     );
 
     const logoInput = document.querySelector("#logo-input");
+
     const logoPreviewImage = document.querySelector(
         "#logo-preview-image"
     );
@@ -61,6 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     const bannerInput = document.querySelector("#banner-input");
+
     const bannerPreviewImage = document.querySelector(
         "#banner-preview-image"
     );
@@ -78,24 +82,19 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     const galleryInput = document.querySelector("#gallery-input");
+
     const galleryPreviewGrid = document.querySelector(
         "#gallery-preview-grid"
-    );
-
-    const emptyGallery = document.querySelector("#empty-gallery");
-
-    const professionalSetupInput = document.querySelector(
-        "#professional-setup"
     );
 
     const termsInput = document.querySelector("#terms");
     const termsError = document.querySelector("#terms-error");
 
     const summaryPlan = document.querySelector("#summary-plan");
-    const summarySetup = document.querySelector("#summary-setup");
     const summaryTotal = document.querySelector("#summary-total");
 
     const successModal = document.querySelector("#success-modal");
+
     const createdLinkText = document.querySelector(
         "#created-link-text"
     );
@@ -105,7 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     let currentStep = 1;
-    let serviceCounter = 0;
     let professionalCounter = 0;
     let slugWasEdited = false;
 
@@ -119,22 +117,27 @@ document.addEventListener("DOMContentLoaded", () => {
             primary: "#d6aa45",
             secondary: "#111111"
         },
+
         urban: {
             primary: "#f5f5f5",
             secondary: "#151515"
         },
+
         ocean: {
             primary: "#d6aa45",
             secondary: "#152747"
         },
+
         forest: {
             primary: "#4f9b70",
             secondary: "#173629"
         },
+
         royal: {
             primary: "#b45878",
             secondary: "#611f35"
         },
+
         sunset: {
             primary: "#e26d2f",
             secondary: "#171717"
@@ -208,9 +211,12 @@ document.addEventListener("DOMContentLoaded", () => {
             const reader = new FileReader();
 
             reader.onload = () => resolve(reader.result);
-            reader.onerror = () => reject(
-                new Error("Não foi possível ler a imagem.")
-            );
+
+            reader.onerror = () => {
+                reject(
+                    new Error("Não foi possível carregar a imagem.")
+                );
+            };
 
             reader.readAsDataURL(file);
         });
@@ -240,20 +246,38 @@ document.addEventListener("DOMContentLoaded", () => {
         progressDots.forEach((dot) => {
             const number = Number(dot.dataset.progressDot);
 
-            dot.classList.toggle("active", number === currentStep);
-            dot.classList.toggle("completed", number < currentStep);
+            dot.classList.toggle(
+                "active",
+                number === currentStep
+            );
+
+            dot.classList.toggle(
+                "completed",
+                number < currentStep
+            );
         });
 
         sidebarSteps.forEach((item) => {
             const number = Number(item.dataset.sidebarStep);
 
-            item.classList.toggle("active", number === currentStep);
-            item.classList.toggle("completed", number < currentStep);
+            item.classList.toggle(
+                "active",
+                number === currentStep
+            );
+
+            item.classList.toggle(
+                "completed",
+                number < currentStep
+            );
         });
 
         backButton.disabled = currentStep === 1;
-        nextButton.hidden = currentStep === steps.length;
-        finishButton.hidden = currentStep !== steps.length;
+
+        nextButton.hidden =
+            currentStep === steps.length;
+
+        finishButton.hidden =
+            currentStep !== steps.length;
 
         if (currentStep === 7) {
             renderProfessionalImages();
@@ -311,7 +335,11 @@ document.addEventListener("DOMContentLoaded", () => {
             const value = field.value.trim();
 
             if (!value) {
-                showFieldError(field, "Preencha este campo.");
+                showFieldError(
+                    field,
+                    "Preencha este campo."
+                );
+
                 valid = false;
                 return;
             }
@@ -320,7 +348,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 field.type === "email" &&
                 !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
             ) {
-                showFieldError(field, "Digite um e-mail válido.");
+                showFieldError(
+                    field,
+                    "Digite um e-mail válido."
+                );
+
                 valid = false;
             }
 
@@ -348,7 +380,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const error = document.querySelector("#services-error");
 
         if (!cards.length) {
-            error.textContent = "Adicione pelo menos um serviço.";
+            error.textContent =
+                "Adicione pelo menos um serviço.";
+
             return false;
         }
 
@@ -427,7 +461,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const pattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
         if (!value) {
-            slugStatus.textContent = "Escolha um link.";
+            slugStatus.textContent =
+                "Escolha um link.";
+
             slugStatus.classList.add("unavailable");
             return false;
         }
@@ -482,8 +518,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function createService(service = {}) {
-        serviceCounter += 1;
-
         const card = document.createElement("article");
 
         card.className = "dynamic-card service-card";
@@ -534,7 +568,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         card
             .querySelector(".remove-item-button")
-            .addEventListener("click", () => card.remove());
+            .addEventListener("click", () => {
+                card.remove();
+            });
 
         servicesList.appendChild(card);
     }
@@ -543,9 +579,12 @@ document.addEventListener("DOMContentLoaded", () => {
         professionalCounter += 1;
 
         const id = `professional-${professionalCounter}`;
+
         const card = document.createElement("article");
 
-        card.className = "dynamic-card professional-card";
+        card.className =
+            "dynamic-card professional-card";
+
         card.dataset.professionalId = id;
 
         card.innerHTML = `
@@ -602,6 +641,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     >
 
                     <span class="day-checkbox"></span>
+
                     <strong>${label}</strong>
                 </label>
 
@@ -647,6 +687,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             return {
                 id,
+
                 name: card
                     .querySelector(".professional-name")
                     .value.trim(),
@@ -667,6 +708,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         professionals.forEach((professional) => {
             const card = document.createElement("article");
+
             const initials = getInitials(professional.name);
 
             card.className = "professional-image-card";
@@ -675,7 +717,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="professional-avatar">
                     ${
                         professional.image
-                            ? `<img src="${professional.image}" alt="${professional.name}">`
+                            ? `
+                                <img
+                                    src="${professional.image}"
+                                    alt="${professional.name}"
+                                >
+                            `
                             : `<span>${initials}</span>`
                     }
                 </div>
@@ -727,7 +774,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateAutomaticBanner() {
         const themeName = getSelectedTheme();
-        const theme = themes[themeName] || themes.legacy;
+
+        const theme =
+            themes[themeName] || themes.legacy;
 
         automaticBanner.style.setProperty(
             "--banner-primary",
@@ -740,14 +789,17 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
         automaticBannerName.textContent =
-            barbershopNameInput.value.trim() || "Sua Barbearia";
+            barbershopNameInput.value.trim() ||
+            "Sua Barbearia";
     }
 
     function updateImageFallbacks() {
         const name =
-            barbershopNameInput.value.trim() || "Sua Barbearia";
+            barbershopNameInput.value.trim() ||
+            "Sua Barbearia";
 
         logoFallback.textContent = getInitials(name);
+
         automaticBannerName.textContent = name;
 
         updateAutomaticBanner();
@@ -757,8 +809,24 @@ document.addEventListener("DOMContentLoaded", () => {
         galleryPreviewGrid.innerHTML = "";
 
         if (!galleryImages.length) {
-            galleryPreviewGrid.appendChild(emptyGallery);
-            emptyGallery.hidden = false;
+            galleryPreviewGrid.innerHTML = `
+                <div
+                    class="empty-gallery"
+                    id="empty-gallery"
+                >
+                    <span>+</span>
+
+                    <strong>
+                        Nenhuma foto adicionada
+                    </strong>
+
+                    <p>
+                        A galeria não aparecerá na página
+                        enquanto não houver imagens.
+                    </p>
+                </div>
+            `;
+
             return;
         }
 
@@ -768,7 +836,10 @@ document.addEventListener("DOMContentLoaded", () => {
             item.className = "gallery-item";
 
             item.innerHTML = `
-                <img src="${image}" alt="Imagem da galeria">
+                <img
+                    src="${image}"
+                    alt="Imagem da galeria"
+                >
 
                 <button
                     type="button"
@@ -778,13 +849,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 </button>
             `;
 
-            item.querySelector("button").addEventListener(
-                "click",
-                () => {
+            item
+                .querySelector("button")
+                .addEventListener("click", () => {
                     galleryImages.splice(index, 1);
                     renderGallery();
-                }
-            );
+                });
 
             galleryPreviewGrid.appendChild(item);
         });
@@ -795,26 +865,21 @@ document.addEventListener("DOMContentLoaded", () => {
             'input[name="billing"]:checked'
         )?.value || "monthly";
 
-        const hasSetup = professionalSetupInput.checked;
-
-        const planPrice = billing === "annual" ? 229.9 : 22.9;
-        const total = planPrice + (hasSetup ? 29.9 : 0);
+        const planPrice =
+            billing === "annual"
+                ? 349.9
+                : 34.9;
 
         summaryPlan.textContent =
             billing === "annual"
-                ? "Plano anual"
-                : "Plano mensal";
+                ? "Pagamento anual"
+                : "Pagamento mensal";
 
-        summarySetup.textContent =
-            hasSetup ? "R$ 29,90" : "Não adicionada";
-
-        summaryTotal.textContent = total.toLocaleString(
-            "pt-BR",
-            {
+        summaryTotal.textContent =
+            planPrice.toLocaleString("pt-BR", {
                 style: "currency",
                 currency: "BRL"
-            }
-        );
+            });
     }
 
     function getServices() {
@@ -877,7 +942,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             barbershop: {
                 name: barbershopNameInput.value.trim(),
-                description: descriptionInput.value.trim(),
+
+                description:
+                    descriptionInput.value.trim(),
 
                 city: document
                     .querySelector("#barbershop-city")
@@ -900,8 +967,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     .value.trim(),
 
                 slug: slugInput.value.trim(),
+
                 services: getServices(),
+
                 professionals: getProfessionals(),
+
                 schedule: getSchedule(),
 
                 appearance: {
@@ -919,8 +989,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             subscription: {
                 billing,
-                professionalSetup:
-                    professionalSetupInput.checked
+
+                price:
+                    billing === "annual"
+                        ? 349.9
+                        : 34.9
             },
 
             createdAt: new Date().toISOString()
@@ -942,8 +1015,8 @@ document.addEventListener("DOMContentLoaded", () => {
             return true;
         } catch (error) {
             alert(
-                "As imagens ficaram grandes demais para o navegador. " +
-                "Tente adicionar menos fotos ou imagens menores."
+                "As imagens ficaram grandes demais para serem " +
+                "salvas neste navegador. Tente adicionar imagens menores."
             );
 
             return false;
@@ -990,16 +1063,24 @@ document.addEventListener("DOMContentLoaded", () => {
             `./barbearia.html?barbearia=${encodeURIComponent(slug)}`;
 
         successModal.classList.add("open");
-        successModal.setAttribute("aria-hidden", "false");
+
+        successModal.setAttribute(
+            "aria-hidden",
+            "false"
+        );
     });
 
     document
         .querySelector("#add-service-button")
-        .addEventListener("click", () => createService());
+        .addEventListener("click", () => {
+            createService();
+        });
 
     document
         .querySelector("#add-professional-button")
-        .addEventListener("click", () => createProfessional());
+        .addEventListener("click", () => {
+            createProfessional();
+        });
 
     barbershopNameInput.addEventListener("input", () => {
         if (!slugWasEdited) {
@@ -1015,7 +1096,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     slugInput.addEventListener("input", () => {
         slugWasEdited = true;
-        slugInput.value = sanitizeSlug(slugInput.value);
+
+        slugInput.value = sanitizeSlug(
+            slugInput.value
+        );
+
         validateSlug();
     });
 
@@ -1025,7 +1110,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document
-        .querySelectorAll("#owner-phone, #barbershop-whatsapp")
+        .querySelectorAll(
+            "#owner-phone, #barbershop-whatsapp"
+        )
         .forEach((input) => {
             input.addEventListener("input", () => {
                 input.value = formatPhone(input.value);
@@ -1039,15 +1126,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 "#owner-password"
             );
 
-            const showing = passwordInput.type === "text";
+            const showing =
+                passwordInput.type === "text";
 
-            passwordInput.type = showing
-                ? "password"
-                : "text";
+            passwordInput.type =
+                showing ? "password" : "text";
 
-            event.currentTarget.textContent = showing
-                ? "Mostrar"
-                : "Ocultar";
+            event.currentTarget.textContent =
+                showing ? "Mostrar" : "Ocultar";
         });
 
     document
@@ -1066,7 +1152,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 const theme = themes[input.value];
 
-                customColorInput.value = theme.primary;
+                customColorInput.value =
+                    theme.primary;
+
                 customColorValue.textContent =
                     theme.primary.toUpperCase();
 
@@ -1140,10 +1228,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     galleryInput.addEventListener("change", async () => {
-        const files = [...galleryInput.files].slice(
-            0,
-            Math.max(0, 8 - galleryImages.length)
-        );
+        const availableSpaces =
+            Math.max(0, 8 - galleryImages.length);
+
+        const files = [
+            ...galleryInput.files
+        ].slice(0, availableSpaces);
 
         for (const file of files) {
             try {
@@ -1155,6 +1245,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         galleryInput.value = "";
+
         renderGallery();
     });
 
@@ -1166,11 +1257,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 updateOrderSummary
             );
         });
-
-    professionalSetupInput.addEventListener(
-        "change",
-        updateOrderSummary
-    );
 
     termsInput.addEventListener("change", () => {
         if (termsInput.checked) {

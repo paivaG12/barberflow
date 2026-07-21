@@ -10,741 +10,899 @@
 
     <meta
         name="description"
-        content="BarberFlow: sistema de gestão, agendamento e página profissional para barbearias."
+        content="BarberFlow: página profissional personalizada, agendamento online e gestão completa para barbearias."
     >
 
-    <title>BarberFlow | Gestão para barbearias</title>
+    <title>BarberFlow | Gestão e agendamento para barbearias</title>
 
-    <link rel="stylesheet" href="./css/global.css">
-    <link rel="stylesheet" href="./css/landing.css">
+    <link rel="stylesheet" href="./css/style.css">
 
-    <script src="./js/theme.js" defer></script>
+    <script src="./js/main.js" defer></script>
 </head>
 
 <body>
-    <header class="header">
-        <div class="container header-content">
-            <a href="./index.html" class="logo">
+    <!-- CABEÇALHO -->
+    <header class="header" id="header">
+        <div class="container header-container">
+            <a href="#inicio" class="logo" aria-label="BarberFlow">
                 Barber<span>Flow</span>
             </a>
 
-            <nav class="navigation">
+            <nav class="desktop-navigation" aria-label="Navegação principal">
                 <a href="#recursos">Recursos</a>
+                <a href="#personalizacao">Personalização</a>
                 <a href="#como-funciona">Como funciona</a>
-                <a href="#pagina-publica">Página pública</a>
                 <a href="#plano">Plano</a>
             </nav>
 
             <div class="header-actions">
-                <button
-                    type="button"
-                    class="theme-button"
-                    id="theme-button"
-                    aria-label="Alterar tema"
-                >
-                    <span id="theme-icon">☀</span>
-                </button>
-
-                <a
-                    href="./pages/login.html"
-                    class="header-login"
-                >
+                <a href="./pages/login.html" class="login-link">
                     Entrar
                 </a>
 
-                <a
-                    href="./pages/cadastro.html"
-                    class="header-button"
-                >
+                <a href="./pages/cadastro.html" class="header-button">
                     Começar agora
                 </a>
             </div>
+
+            <button
+                type="button"
+                class="menu-button"
+                id="menu-button"
+                aria-label="Abrir menu"
+                aria-expanded="false"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mobile-menu" id="mobile-menu">
+            <nav aria-label="Navegação para dispositivos móveis">
+                <a href="#recursos">Recursos</a>
+                <a href="#personalizacao">Personalização</a>
+                <a href="#como-funciona">Como funciona</a>
+                <a href="#plano">Plano</a>
+                <a href="./pages/login.html">Entrar</a>
+                <a href="./pages/cadastro.html" class="mobile-menu-button">
+                    Começar agora
+                </a>
+            </nav>
         </div>
     </header>
 
     <main>
-        <section class="management-hero">
-            <div class="container management-hero-content">
-                <div class="management-hero-text">
-                    <span class="hero-label">
-                        Gestão simples para barbearias
+        <!-- HERO -->
+        <section class="hero" id="inicio">
+            <div class="hero-background">
+                <span class="hero-light hero-light-one"></span>
+                <span class="hero-light hero-light-two"></span>
+            </div>
+
+            <div class="container hero-container">
+                <div class="hero-content reveal">
+                    <span class="section-label">
+                        Gestão completa para barbearias
                     </span>
 
                     <h1>
-                        Organize sua agenda e profissionalize sua barbearia.
+                        Sua barbearia organizada, profissional e
+                        <span>pronta para crescer.</span>
                     </h1>
 
-                    <p>
-                        Gerencie horários, clientes, serviços e equipe em
-                        um só lugar. Receba agendamentos online por meio
-                        de uma página exclusiva para sua barbearia.
+                    <p class="hero-description">
+                        Tenha agenda online, gestão de clientes, serviços,
+                        equipe e uma página profissional personalizada com
+                        a identidade da sua barbearia.
                     </p>
 
                     <div class="hero-actions">
                         <a
                             href="./pages/cadastro.html"
-                            class="button button-primary"
+                            class="primary-button"
                         >
                             Criar minha barbearia
+
+                            <span>→</span>
                         </a>
 
-                        <a
-                            href="./pages/barbearia.html?barbearia=demo"
-                            class="button button-secondary"
-                        >
-                            Ver página de exemplo
+                        <a href="#como-funciona" class="secondary-button">
+                            Ver como funciona
                         </a>
                     </div>
 
-                    <div class="hero-highlights">
-                        <span>Sem instalação</span>
-                        <span>Fácil de configurar</span>
-                        <span>Link exclusivo</span>
-                        <span>Gestão completa</span>
+                    <div class="hero-benefits">
+                        <span>
+                            <strong>✓</strong>
+                            Cadastro simples
+                        </span>
+
+                        <span>
+                            <strong>✓</strong>
+                            Página personalizada
+                        </span>
+
+                        <span>
+                            <strong>✓</strong>
+                            Sem taxa de configuração
+                        </span>
                     </div>
                 </div>
 
-                <div class="dashboard-preview">
-                    <div class="dashboard-window">
-                        <div class="dashboard-window-top">
-                            <div class="window-dots">
-                                <span></span>
-                                <span></span>
-                                <span></span>
+                <div class="hero-visual reveal">
+                    <div class="dashboard-preview">
+                        <div class="preview-topbar">
+                            <div class="preview-brand">
+                                <span class="preview-logo">BF</span>
+
+                                <div>
+                                    <strong>BarberFlow</strong>
+                                    <small>Painel da barbearia</small>
+                                </div>
                             </div>
 
-                            <div class="window-address">
-                                app.barberflow.com/painel
-                            </div>
+                            <span class="preview-status">
+                                ● Online
+                            </span>
                         </div>
 
-                        <div class="dashboard-layout">
+                        <div class="preview-layout">
                             <aside class="preview-sidebar">
-                                <div class="preview-brand">
-                                    BF
-                                </div>
-
-                                <nav>
-                                    <span class="active">
-                                        Visão geral
-                                    </span>
-
-                                    <span>Agenda</span>
-                                    <span>Clientes</span>
-                                    <span>Serviços</span>
-                                    <span>Equipe</span>
-                                </nav>
+                                <span class="active">Visão geral</span>
+                                <span>Agenda</span>
+                                <span>Clientes</span>
+                                <span>Serviços</span>
+                                <span>Equipe</span>
+                                <span>Minha página</span>
                             </aside>
 
                             <div class="preview-main">
                                 <div class="preview-heading">
                                     <div>
-                                        <small>Bem-vindo</small>
-                                        <strong>Sua Barbearia</strong>
+                                        <small>Bom dia</small>
+                                        <strong>Visão geral</strong>
                                     </div>
 
-                                    <span>Hoje</span>
+                                    <button type="button">
+                                        + Novo agendamento
+                                    </button>
                                 </div>
 
-                                <div class="preview-stats">
+                                <div class="preview-metrics">
                                     <article>
-                                        <small>Agendamentos</small>
-                                        <strong>8</strong>
-                                        <span>Hoje</span>
+                                        <small>Agendamentos hoje</small>
+                                        <strong>12</strong>
+                                        <span>+3 esta semana</span>
                                     </article>
 
                                     <article>
                                         <small>Clientes</small>
-                                        <strong>42</strong>
-                                        <span>Cadastrados</span>
+                                        <strong>184</strong>
+                                        <span>+14 este mês</span>
                                     </article>
 
                                     <article>
-                                        <small>Horários livres</small>
-                                        <strong>3</strong>
-                                        <span>Disponíveis</span>
+                                        <small>Faturamento</small>
+                                        <strong>R$ 840</strong>
+                                        <span>Hoje</span>
                                     </article>
                                 </div>
 
-                                <div class="preview-agenda">
-                                    <div class="preview-agenda-title">
-                                        <strong>Próximos atendimentos</strong>
-                                        <span>Ver agenda</span>
+                                <div class="preview-bottom">
+                                    <div class="appointments-card">
+                                        <div class="card-heading">
+                                            <strong>Próximos horários</strong>
+                                            <span>Hoje</span>
+                                        </div>
+
+                                        <div class="appointment-item">
+                                            <span class="appointment-time">
+                                                14:00
+                                            </span>
+
+                                            <div>
+                                                <strong>Lucas Andrade</strong>
+                                                <small>Corte masculino</small>
+                                            </div>
+
+                                            <span class="appointment-badge">
+                                                Confirmado
+                                            </span>
+                                        </div>
+
+                                        <div class="appointment-item">
+                                            <span class="appointment-time">
+                                                15:00
+                                            </span>
+
+                                            <div>
+                                                <strong>Matheus Silva</strong>
+                                                <small>Corte + barba</small>
+                                            </div>
+
+                                            <span class="appointment-badge">
+                                                Confirmado
+                                            </span>
+                                        </div>
+
+                                        <div class="appointment-item">
+                                            <span class="appointment-time">
+                                                16:30
+                                            </span>
+
+                                            <div>
+                                                <strong>Pedro Henrique</strong>
+                                                <small>Barba</small>
+                                            </div>
+
+                                            <span class="appointment-badge waiting">
+                                                Pendente
+                                            </span>
+                                        </div>
                                     </div>
 
-                                    <article>
-                                        <div class="appointment-time">
-                                            09:00
+                                    <div class="page-card">
+                                        <small>Sua página</small>
+
+                                        <div class="page-card-banner">
+                                            <span>CB</span>
                                         </div>
 
-                                        <div class="appointment-client">
-                                            <strong>Lucas</strong>
-                                            <span>Corte masculino</span>
-                                        </div>
+                                        <strong>Central Barber</strong>
 
-                                        <small class="appointment-status">
-                                            Confirmado
-                                        </small>
-                                    </article>
+                                        <p>
+                                            Página profissional publicada
+                                            e pronta para receber clientes.
+                                        </p>
 
-                                    <article>
-                                        <div class="appointment-time">
-                                            10:00
-                                        </div>
-
-                                        <div class="appointment-client">
-                                            <strong>Marcos</strong>
-                                            <span>Corte + barba</span>
-                                        </div>
-
-                                        <small class="appointment-status">
-                                            Confirmado
-                                        </small>
-                                    </article>
-
-                                    <article>
-                                        <div class="appointment-time">
-                                            11:30
-                                        </div>
-
-                                        <div class="appointment-client">
-                                            <strong>Rafael</strong>
-                                            <span>Barba</span>
-                                        </div>
-
-                                        <small class="appointment-status pending">
-                                            Pendente
-                                        </small>
-                                    </article>
+                                        <span class="page-link">
+                                            barberflow.com/central-barber
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="floating-card floating-card-one">
+                        <span>✓</span>
+
+                        <div>
+                            <strong>Novo agendamento</strong>
+                            <small>Cliente confirmado</small>
+                        </div>
+                    </div>
+
+                    <div class="floating-card floating-card-two">
+                        <small>Página publicada</small>
+                        <strong>100% personalizada</strong>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section
-            class="management-section management-section-soft"
-            id="recursos"
-        >
+        <!-- MARCAS / DESTAQUES -->
+        <section class="trust-section">
+            <div class="container trust-container">
+                <p>
+                    Tudo o que sua barbearia precisa em uma única plataforma
+                </p>
+
+                <div class="trust-items">
+                    <span>Agenda online</span>
+                    <span>Gestão de clientes</span>
+                    <span>Equipe</span>
+                    <span>Serviços</span>
+                    <span>Página profissional</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- RECURSOS -->
+        <section class="section resources-section" id="recursos">
             <div class="container">
-                <div class="section-heading">
-                    <span>Gestão completa</span>
+                <div class="section-heading reveal">
+                    <span class="section-label">
+                        Recursos
+                    </span>
 
                     <h2>
-                        Tudo que você precisa para administrar sua barbearia
+                        Menos confusão. Mais controle sobre sua barbearia.
                     </h2>
 
                     <p>
-                        Um painel simples para organizar o dia a dia sem
-                        planilhas, anotações ou mensagens perdidas.
+                        Centralize os agendamentos, clientes, serviços,
+                        profissionais e informações da sua barbearia.
                     </p>
                 </div>
 
-                <div class="management-grid">
-                    <article class="management-card featured-card">
-                        <div class="management-icon">
+                <div class="resources-grid">
+                    <article class="resource-card featured-resource reveal">
+                        <div class="resource-icon">
                             01
                         </div>
 
-                        <h3>Agenda organizada</h3>
+                        <span class="resource-tag">
+                            Agenda
+                        </span>
+
+                        <h3>Agendamento online</h3>
 
                         <p>
-                            Veja seus horários, confirme atendimentos,
-                            reagende clientes e bloqueie períodos de folga.
+                            Seus clientes escolhem o serviço, profissional,
+                            dia e horário sem precisar trocar várias mensagens.
                         </p>
 
-                        <div class="mini-calendar">
-                            <span>08:00</span>
-                            <strong>Corte masculino</strong>
-                            <small>Confirmado</small>
-                        </div>
+                        <div class="resource-demo schedule-demo">
+                            <div class="demo-header">
+                                <strong>Agenda de hoje</strong>
+                                <span>12 horários</span>
+                            </div>
 
-                        <div class="mini-calendar">
-                            <span>09:00</span>
-                            <strong>Corte + barba</strong>
-                            <small>Confirmado</small>
+                            <div class="demo-schedule-row">
+                                <span>09:00</span>
+                                <div>
+                                    <strong>Corte masculino</strong>
+                                    <small>João Carlos</small>
+                                </div>
+                                <small>Confirmado</small>
+                            </div>
+
+                            <div class="demo-schedule-row">
+                                <span>10:00</span>
+                                <div>
+                                    <strong>Corte + barba</strong>
+                                    <small>Gabriel Santos</small>
+                                </div>
+                                <small>Confirmado</small>
+                            </div>
                         </div>
                     </article>
 
-                    <article class="management-card">
-                        <div class="management-icon">
+                    <article class="resource-card reveal">
+                        <div class="resource-icon">
                             02
                         </div>
+
+                        <span class="resource-tag">
+                            Clientes
+                        </span>
 
                         <h3>Gestão de clientes</h3>
 
                         <p>
-                            Consulte contatos, histórico de atendimentos
-                            e informações importantes de cada cliente.
+                            Tenha os dados e o histórico de atendimento dos
+                            clientes organizados em um único lugar.
                         </p>
                     </article>
 
-                    <article class="management-card">
-                        <div class="management-icon">
+                    <article class="resource-card reveal">
+                        <div class="resource-icon">
                             03
                         </div>
+
+                        <span class="resource-tag">
+                            Equipe
+                        </span>
+
+                        <h3>Organização da equipe</h3>
+
+                        <p>
+                            Cadastre profissionais, especialidades, fotos
+                            e horários de atendimento.
+                        </p>
+                    </article>
+
+                    <article class="resource-card reveal">
+                        <div class="resource-icon">
+                            04
+                        </div>
+
+                        <span class="resource-tag">
+                            Serviços
+                        </span>
 
                         <h3>Serviços e preços</h3>
 
                         <p>
-                            Cadastre serviços, preços, duração e deixe
-                            tudo disponível para o cliente agendar.
+                            Organize seus serviços, preços e duração para
+                            facilitar a escolha dos clientes.
                         </p>
                     </article>
 
-                    <article class="management-card">
-                        <div class="management-icon">
-                            04
-                        </div>
-
-                        <h3>Equipe</h3>
-
-                        <p>
-                            Adicione barbeiros, fotos, especialidades
-                            e horários de trabalho individuais.
-                        </p>
-                    </article>
-
-                    <article class="management-card">
-                        <div class="management-icon">
+                    <article class="resource-card reveal">
+                        <div class="resource-icon">
                             05
                         </div>
 
-                        <h3>Horários disponíveis</h3>
+                        <span class="resource-tag">
+                            Página
+                        </span>
+
+                        <h3>Link profissional</h3>
 
                         <p>
-                            Evite conflitos de agenda e mostre apenas
-                            os horários realmente disponíveis.
-                        </p>
-                    </article>
-
-                    <article class="management-card">
-                        <div class="management-icon">
-                            06
-                        </div>
-
-                        <h3>Página profissional</h3>
-
-                        <p>
-                            Receba um link exclusivo com seus serviços,
-                            fotos, equipe, informações e agendamento.
+                            Divulgue sua página no Instagram, WhatsApp,
+                            Google e em qualquer rede social.
                         </p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section class="workflow-section" id="como-funciona">
-            <div class="container workflow-content">
-                <div class="workflow-heading">
+        <!-- PERSONALIZAÇÃO -->
+        <section
+            class="section personalization-section"
+            id="personalizacao"
+        >
+            <div class="container personalization-container">
+                <div class="personalization-content reveal">
+                    <span class="section-label">
+                        Página personalizada
+                    </span>
+
+                    <h2>
+                        Uma página com a identidade da sua barbearia.
+                    </h2>
+
+                    <p>
+                        Escolha as cores, envie sua logo, banner, fotos,
+                        serviços e equipe. O BarberFlow utiliza essas
+                        informações para criar sua página profissional.
+                    </p>
+
+                    <div class="personalization-list">
+                        <article>
+                            <span>✓</span>
+
+                            <div>
+                                <strong>Logo e banner</strong>
+                                <p>
+                                    Destaque sua marca desde o primeiro acesso.
+                                </p>
+                            </div>
+                        </article>
+
+                        <article>
+                            <span>✓</span>
+
+                            <div>
+                                <strong>Cores personalizadas</strong>
+                                <p>
+                                    Escolha uma paleta ou uma cor principal.
+                                </p>
+                            </div>
+                        </article>
+
+                        <article>
+                            <span>✓</span>
+
+                            <div>
+                                <strong>Galeria de fotos</strong>
+                                <p>
+                                    Mostre seus cortes e o espaço da barbearia.
+                                </p>
+                            </div>
+                        </article>
+
+                        <article>
+                            <span>✓</span>
+
+                            <div>
+                                <strong>Banner automático</strong>
+                                <p>
+                                    Sem uma imagem, criamos um banner com
+                                    o nome e as cores da sua barbearia.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <a
+                        href="./pages/cadastro.html"
+                        class="text-link"
+                    >
+                        Criar minha página
+                        <span>→</span>
+                    </a>
+                </div>
+
+                <div class="site-preview reveal">
+                    <div class="site-browser">
+                        <div class="browser-top">
+                            <div class="browser-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+
+                            <div class="browser-address">
+                                barberflow.com/central-barber
+                            </div>
+                        </div>
+
+                        <div class="barbershop-page-preview">
+                            <div class="shop-navigation">
+                                <div class="shop-brand">
+                                    <span>CB</span>
+
+                                    <strong>Central Barber</strong>
+                                </div>
+
+                                <div class="shop-links">
+                                    <span>Serviços</span>
+                                    <span>Equipe</span>
+                                    <span>Galeria</span>
+                                </div>
+
+                                <button type="button">
+                                    Agendar
+                                </button>
+                            </div>
+
+                            <div class="shop-banner">
+                                <div class="shop-banner-overlay"></div>
+
+                                <div class="shop-banner-content">
+                                    <small>Bem-vindo à</small>
+
+                                    <strong>Central Barber</strong>
+
+                                    <p>
+                                        Estilo, cuidado e profissionalismo.
+                                    </p>
+
+                                    <button type="button">
+                                        Agendar horário
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="shop-services">
+                                <span>Serviços</span>
+
+                                <div class="shop-service-list">
+                                    <article>
+                                        <div>
+                                            <strong>Corte masculino</strong>
+                                            <small>40 minutos</small>
+                                        </div>
+
+                                        <span>R$ 35</span>
+                                    </article>
+
+                                    <article>
+                                        <div>
+                                            <strong>Corte + barba</strong>
+                                            <small>60 minutos</small>
+                                        </div>
+
+                                        <span>R$ 55</span>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-selector-preview">
+                        <span class="selected"></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMO FUNCIONA -->
+        <section
+            class="section how-section"
+            id="como-funciona"
+        >
+            <div class="container">
+                <div class="section-heading centered reveal">
                     <span class="section-label">
                         Como funciona
                     </span>
 
                     <h2>
-                        Sua barbearia pronta em poucos passos
+                        Sua página pronta em poucos passos.
                     </h2>
 
                     <p>
-                        Você não precisa entender de programação.
-                        Basta preencher as informações e o BarberFlow
-                        monta tudo automaticamente.
+                        Você não precisa saber programação ou contratar
+                        alguém para começar.
                     </p>
                 </div>
 
-                <div class="workflow-list">
-                    <article>
-                        <span>01</span>
+                <div class="steps-grid">
+                    <article class="step-card reveal">
+                        <span class="step-number">01</span>
 
-                        <div>
-                            <h3>Crie sua conta</h3>
+                        <div class="step-icon">+</div>
 
-                            <p>
-                                Informe seus dados e escolha entre
-                                pagamento mensal ou anual.
-                            </p>
-                        </div>
+                        <h3>Crie sua conta</h3>
+
+                        <p>
+                            Informe seus dados para acessar o painel
+                            da sua barbearia.
+                        </p>
                     </article>
 
-                    <article>
-                        <span>02</span>
+                    <article class="step-card reveal">
+                        <span class="step-number">02</span>
 
-                        <div>
-                            <h3>Preencha as informações</h3>
+                        <div class="step-icon">✦</div>
 
-                            <p>
-                                Adicione nome, serviços, preços, equipe,
-                                horários, fotos e contatos.
-                            </p>
-                        </div>
+                        <h3>Personalize sua página</h3>
+
+                        <p>
+                            Adicione serviços, equipe, horários,
+                            cores, logo e imagens.
+                        </p>
                     </article>
 
-                    <article>
-                        <span>03</span>
+                    <article class="step-card reveal">
+                        <span class="step-number">03</span>
 
-                        <div>
-                            <h3>Escolha a aparência</h3>
+                        <div class="step-icon">↗</div>
 
-                            <p>
-                                Selecione uma paleta pronta ou escolha
-                                uma cor principal personalizada.
-                            </p>
-                        </div>
-                    </article>
+                        <h3>Compartilhe seu link</h3>
 
-                    <article>
-                        <span>04</span>
-
-                        <div>
-                            <h3>Compartilhe seu link</h3>
-
-                            <p>
-                                Divulgue sua página no WhatsApp,
-                                Instagram e outras redes sociais.
-                            </p>
-                        </div>
+                        <p>
+                            Divulgue sua página e comece a receber
+                            agendamentos online.
+                        </p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section
-            class="public-page-section"
-            id="pagina-publica"
-        >
-            <div class="container public-page-content">
-                <div class="public-page-preview">
-                    <div class="public-page-browser">
-                        <div class="public-browser-top">
-                            <div class="window-dots">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-
-                            <div class="window-address">
-                                barberflow.com/sua-barbearia
-                            </div>
-                        </div>
-
-                        <div class="public-page-body">
-                            <div class="public-banner">
-                                <div class="public-logo">
-                                    SB
-                                </div>
-
-                                <div>
-                                    <small>Aberto hoje</small>
-                                    <strong>Sua Barbearia</strong>
-                                    <span>Sua cidade - UF</span>
-                                </div>
-                            </div>
-
-                            <div class="public-services">
-                                <article>
-                                    <div>
-                                        <strong>Corte masculino</strong>
-                                        <span>40 minutos</span>
-                                    </div>
-
-                                    <small>R$ 35</small>
-                                </article>
-
-                                <article>
-                                    <div>
-                                        <strong>Corte + barba</strong>
-                                        <span>60 minutos</span>
-                                    </div>
-
-                                    <small>R$ 55</small>
-                                </article>
-                            </div>
-
-                            <div class="public-booking-button">
-                                Agendar horário
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="public-page-text">
+        <!-- PLANO -->
+        <section class="section pricing-section" id="plano">
+            <div class="container pricing-container">
+                <div class="pricing-content reveal">
                     <span class="section-label">
-                        Seu link exclusivo
+                        Plano BarberFlow
                     </span>
 
                     <h2>
-                        Uma página profissional para sua barbearia
+                        Um único plano. Todos os recursos.
                     </h2>
 
                     <p>
-                        Cada barbearia recebe um endereço próprio para
-                        divulgar e receber agendamentos.
+                        Sem versões limitadas ou recursos escondidos.
+                        Escolha apenas entre pagamento mensal ou anual.
                     </p>
 
-                    <div class="public-link-example">
-                        <span>Seu link</span>
+                    <div class="pricing-highlights">
+                        <span>
+                            <strong>✓</strong>
+                            Página personalizada
+                        </span>
 
-                        <strong>
-                            barberflow.com/sua-barbearia
-                        </strong>
+                        <span>
+                            <strong>✓</strong>
+                            Agendamento online
+                        </span>
+
+                        <span>
+                            <strong>✓</strong>
+                            Gestão de clientes
+                        </span>
+
+                        <span>
+                            <strong>✓</strong>
+                            Gestão de serviços
+                        </span>
+
+                        <span>
+                            <strong>✓</strong>
+                            Gestão da equipe
+                        </span>
+
+                        <span>
+                            <strong>✓</strong>
+                            Link exclusivo
+                        </span>
+
+                        <span>
+                            <strong>✓</strong>
+                            Atualizações incluídas
+                        </span>
+                    </div>
+                </div>
+
+                <div class="pricing-card reveal">
+                    <div class="billing-toggle">
+                        <button
+                            type="button"
+                            class="active"
+                            data-billing="monthly"
+                        >
+                            Mensal
+                        </button>
+
+                        <button
+                            type="button"
+                            data-billing="annual"
+                        >
+                            Anual
+
+                            <span>Economize</span>
+                        </button>
                     </div>
 
-                    <ul class="public-page-features">
-                        <li>Logo e banner</li>
-                        <li>Fotos dos trabalhos</li>
-                        <li>Serviços, preços e duração</li>
-                        <li>Equipe e horários</li>
-                        <li>WhatsApp e Instagram</li>
-                        <li>Agendamento online</li>
+                    <div class="pricing-card-heading">
+                        <div>
+                            <span>BarberFlow completo</span>
+                            <h3>Todos os recursos incluídos</h3>
+                        </div>
+
+                        <span class="pricing-badge">
+                            Mais escolhido
+                        </span>
+                    </div>
+
+                    <div class="price-area">
+                        <div class="price-main">
+                            <span>R$</span>
+
+                            <strong id="price-value">
+                                34,90
+                            </strong>
+
+                            <small id="price-period">
+                                /mês
+                            </small>
+                        </div>
+
+                        <p id="price-description">
+                            Cobrado mensalmente. Cancele antes
+                            da próxima renovação.
+                        </p>
+
+                        <div
+                            class="annual-saving"
+                            id="annual-saving"
+                            hidden
+                        >
+                            Você economiza R$ 68,90 no ano
+                        </div>
+                    </div>
+
+                    <div class="pricing-divider"></div>
+
+                    <ul class="pricing-features">
+                        <li>
+                            <span>✓</span>
+                            Página profissional personalizada
+                        </li>
+
+                        <li>
+                            <span>✓</span>
+                            Agendamentos online
+                        </li>
+
+                        <li>
+                            <span>✓</span>
+                            Cadastro de clientes
+                        </li>
+
+                        <li>
+                            <span>✓</span>
+                            Serviços e preços
+                        </li>
+
+                        <li>
+                            <span>✓</span>
+                            Gestão de profissionais
+                        </li>
+
+                        <li>
+                            <span>✓</span>
+                            Logo, banner, cores e galeria
+                        </li>
+
+                        <li>
+                            <span>✓</span>
+                            Link exclusivo da barbearia
+                        </li>
                     </ul>
-
-                    <a
-                        href="./pages/barbearia.html?barbearia=demo"
-                        class="button button-secondary"
-                    >
-                        Abrir demonstração
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="customization-section">
-            <div class="container customization-content">
-                <div class="customization-text">
-                    <span class="section-label">
-                        Personalização simples
-                    </span>
-
-                    <h2>
-                        Escolha o estilo da sua barbearia
-                    </h2>
-
-                    <p>
-                        Escolha uma das paletas criadas pelo BarberFlow
-                        ou selecione uma cor personalizada. O layout
-                        permanece profissional em qualquer opção.
-                    </p>
-                </div>
-
-                <div class="palette-grid">
-                    <article class="palette-card">
-                        <div class="palette-colors">
-                            <span class="palette-black"></span>
-                            <span class="palette-gold"></span>
-                        </div>
-
-                        <strong>Legacy</strong>
-                        <small>Preto e dourado</small>
-                    </article>
-
-                    <article class="palette-card">
-                        <div class="palette-colors">
-                            <span class="palette-dark"></span>
-                            <span class="palette-white"></span>
-                        </div>
-
-                        <strong>Urban</strong>
-                        <small>Preto e branco</small>
-                    </article>
-
-                    <article class="palette-card">
-                        <div class="palette-colors">
-                            <span class="palette-blue"></span>
-                            <span class="palette-gold"></span>
-                        </div>
-
-                        <strong>Ocean</strong>
-                        <small>Azul e dourado</small>
-                    </article>
-
-                    <article class="palette-card">
-                        <div class="palette-colors">
-                            <span class="palette-green"></span>
-                            <span class="palette-black"></span>
-                        </div>
-
-                        <strong>Forest</strong>
-                        <small>Verde e preto</small>
-                    </article>
-
-                    <article class="palette-card">
-                        <div class="palette-colors">
-                            <span class="palette-wine"></span>
-                            <span class="palette-dark"></span>
-                        </div>
-
-                        <strong>Royal</strong>
-                        <small>Vinho e preto</small>
-                    </article>
-
-                    <article class="palette-card">
-                        <div class="palette-colors">
-                            <span class="palette-orange"></span>
-                            <span class="palette-dark"></span>
-                        </div>
-
-                        <strong>Sunset</strong>
-                        <small>Laranja e preto</small>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="pricing-section" id="plano">
-            <div class="container">
-                <div class="section-heading pricing-heading">
-                    <span>Plano único</span>
-
-                    <h2>
-                        Todos os recursos em um único plano
-                    </h2>
-
-                    <p>
-                        Você escolhe apenas como deseja pagar:
-                        mensalmente ou uma vez por ano.
-                    </p>
-                </div>
-
-                <div class="pricing-card">
-                    <div class="pricing-main">
-                        <div class="pricing-description">
-                            <span class="pricing-badge">
-                                BarberFlow
-                            </span>
-
-                            <h3>Plano completo</h3>
-
-                            <p>
-                                Gestão, agendamentos e página pública
-                                para sua barbearia.
-                            </p>
-
-                            <ul>
-                                <li>Agenda completa</li>
-                                <li>Gestão de clientes</li>
-                                <li>Serviços e equipe</li>
-                                <li>Link exclusivo</li>
-                                <li>Página profissional</li>
-                                <li>Temas e cores</li>
-                            </ul>
-                        </div>
-
-                        <div class="pricing-options">
-                            <article class="pricing-option">
-                                <span>Mensal</span>
-
-                                <strong>R$ 22,90</strong>
-
-                                <small>por mês</small>
-                            </article>
-
-                            <article
-                                class="pricing-option pricing-option-featured"
-                            >
-                                <div class="best-value">
-                                    Melhor escolha
-                                </div>
-
-                                <span>Anual</span>
-
-                                <strong>R$ 229,90</strong>
-
-                                <small>
-                                    equivalente a R$ 19,16/mês
-                                </small>
-                            </article>
-                        </div>
-                    </div>
 
                     <a
                         href="./pages/cadastro.html"
-                        class="button button-primary pricing-button"
+                        class="pricing-button"
+                        id="pricing-button"
                     >
                         Começar agora
                     </a>
+
+                    <small class="pricing-note">
+                        Configure sua barbearia em poucos minutos.
+                    </small>
                 </div>
             </div>
         </section>
 
-        <section class="setup-section">
-            <div class="container setup-content">
-                <div class="setup-text">
+        <!-- CTA -->
+        <section class="final-cta">
+            <div class="container final-cta-container reveal">
+                <div>
                     <span class="section-label">
-                        Serviço opcional
+                        Comece hoje
                     </span>
 
                     <h2>
-                        Prefere receber tudo configurado?
+                        Sua próxima agenda pode começar agora.
                     </h2>
 
                     <p>
-                        Envie as informações, fotos e serviços.
-                        Nossa equipe organiza e deixa sua barbearia
-                        pronta para começar.
-                    </p>
-
-                    <div class="setup-price">
-                        <strong>R$ 29,90</strong>
-                        <span>pagamento único</span>
-                    </div>
-                </div>
-
-                <div class="setup-card">
-                    <h3>Configuração profissional</h3>
-
-                    <ul>
-                        <li>Cadastro das informações</li>
-                        <li>Organização dos serviços</li>
-                        <li>Cadastro da equipe</li>
-                        <li>Configuração dos horários</li>
-                        <li>Adição das fotos</li>
-                        <li>Escolha da aparência</li>
-                    </ul>
-
-                    <p>
-                        Depois da entrega, você poderá editar tudo
-                        sozinho pelo painel.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section class="final-cta">
-            <div class="container final-cta-content">
-                <div>
-                    <span>Comece agora</span>
-
-                    <h2>
-                        Mais organização para você e mais facilidade para seus clientes.
-                    </h2>
-
-                    <p>
-                        Crie sua conta, configure sua barbearia
-                        e comece a receber agendamentos.
+                        Organize sua barbearia, publique sua página
+                        profissional e facilite o agendamento dos clientes.
                     </p>
                 </div>
 
                 <a
                     href="./pages/cadastro.html"
-                    class="button button-light"
+                    class="final-cta-button"
                 >
                     Criar minha barbearia
+                    <span>→</span>
                 </a>
             </div>
         </section>
     </main>
 
+    <!-- RODAPÉ -->
     <footer class="footer">
-        <div class="container footer-content">
-            <a href="./index.html" class="logo">
-                Barber<span>Flow</span>
-            </a>
+        <div class="container footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="#inicio" class="logo">
+                        Barber<span>Flow</span>
+                    </a>
 
-            <p>
-                Gestão simples e profissional para barbearias.
-            </p>
+                    <p>
+                        Gestão, agendamento e página profissional
+                        para barbearias.
+                    </p>
+                </div>
+
+                <div class="footer-links">
+                    <div>
+                        <strong>Produto</strong>
+                        <a href="#recursos">Recursos</a>
+                        <a href="#personalizacao">Personalização</a>
+                        <a href="#plano">Plano</a>
+                    </div>
+
+                    <div>
+                        <strong>Acesso</strong>
+                        <a href="./pages/login.html">Entrar</a>
+                        <a href="./pages/cadastro.html">Criar conta</a>
+                    </div>
+
+                    <div>
+                        <strong>BarberFlow</strong>
+                        <a href="#">Termos de uso</a>
+                        <a href="#">Privacidade</a>
+                        <a href="#">Contato</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>
+                    © <span id="current-year"></span> BarberFlow.
+                    Todos os direitos reservados.
+                </span>
+
+                <span>
+                    Feito para barbearias que querem crescer.
+                </span>
+            </div>
         </div>
     </footer>
 </body>

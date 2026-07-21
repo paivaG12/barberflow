@@ -23,8 +23,11 @@
 
 <body>
     <main class="register-page">
+
+        <!-- LATERAL -->
         <aside class="register-sidebar">
             <div class="sidebar-content">
+
                 <a href="../index.html" class="sidebar-logo">
                     Barber<span>Flow</span>
                 </a>
@@ -35,52 +38,65 @@
                     </span>
 
                     <h1>
-                        Configure sua barbearia.
+                        Crie sua barbearia no BarberFlow.
                     </h1>
 
                     <p class="sidebar-description">
-                        Responda algumas perguntas e acompanhe sua
-                        página profissional sendo preparada.
+                        Configure sua página personalizada e prepare
+                        sua barbearia para receber agendamentos online.
                     </p>
 
                     <div class="sidebar-steps">
-                        <article class="sidebar-step active" data-sidebar-step="1">
+
+                        <article
+                            class="sidebar-step active"
+                            data-sidebar-step="1"
+                        >
                             <span>01</span>
 
                             <div>
                                 <strong>Crie sua conta</strong>
 
                                 <p>
-                                    Cadastre seus dados para acessar o painel.
+                                    Cadastre seus dados de acesso ao painel.
                                 </p>
                             </div>
                         </article>
 
-                        <article class="sidebar-step" data-sidebar-step="2">
+                        <article
+                            class="sidebar-step"
+                            data-sidebar-step="2"
+                        >
                             <span>02</span>
 
                             <div>
-                                <strong>Informe os dados</strong>
+                                <strong>Dados da barbearia</strong>
 
                                 <p>
-                                    Adicione informações e contatos da barbearia.
+                                    Informe nome, endereço e contatos.
                                 </p>
                             </div>
                         </article>
 
-                        <article class="sidebar-step" data-sidebar-step="3">
+                        <article
+                            class="sidebar-step"
+                            data-sidebar-step="3"
+                        >
                             <span>03</span>
 
                             <div>
                                 <strong>Cadastre os serviços</strong>
 
                                 <p>
-                                    Informe preços e duração dos atendimentos.
+                                    Adicione preços e duração dos atendimentos.
                                 </p>
                             </div>
                         </article>
 
-                        <article class="sidebar-step" data-sidebar-step="4">
+                        <article
+                            class="sidebar-step"
+                            data-sidebar-step="4"
+                        >
                             <span>04</span>
 
                             <div>
@@ -92,60 +108,75 @@
                             </div>
                         </article>
 
-                        <article class="sidebar-step" data-sidebar-step="5">
+                        <article
+                            class="sidebar-step"
+                            data-sidebar-step="5"
+                        >
                             <span>05</span>
 
                             <div>
                                 <strong>Defina os horários</strong>
 
                                 <p>
-                                    Escolha os dias e horários de funcionamento.
+                                    Escolha seus dias e horários de funcionamento.
                                 </p>
                             </div>
                         </article>
 
-                        <article class="sidebar-step" data-sidebar-step="6">
+                        <article
+                            class="sidebar-step"
+                            data-sidebar-step="6"
+                        >
                             <span>06</span>
 
                             <div>
                                 <strong>Escolha a aparência</strong>
 
                                 <p>
-                                    Selecione uma paleta ou cor personalizada.
+                                    Personalize as cores da sua página.
                                 </p>
                             </div>
                         </article>
 
-                        <article class="sidebar-step" data-sidebar-step="7">
+                        <article
+                            class="sidebar-step"
+                            data-sidebar-step="7"
+                        >
                             <span>07</span>
 
                             <div>
                                 <strong>Adicione as imagens</strong>
 
                                 <p>
-                                    Envie logo, banner e fotos dos trabalhos.
+                                    Envie logo, banner, galeria e fotos da equipe.
                                 </p>
                             </div>
                         </article>
 
-                        <article class="sidebar-step" data-sidebar-step="8">
+                        <article
+                            class="sidebar-step"
+                            data-sidebar-step="8"
+                        >
                             <span>08</span>
 
                             <div>
-                                <strong>Finalize a criação</strong>
+                                <strong>Escolha sua assinatura</strong>
 
                                 <p>
-                                    Escolha o link e a forma de pagamento.
+                                    Defina seu link e escolha o pagamento.
                                 </p>
                             </div>
                         </article>
+
                     </div>
                 </div>
             </div>
         </aside>
 
+        <!-- CONTEÚDO -->
         <section class="register-content">
             <div class="register-container">
+
                 <div class="mobile-header">
                     <a href="../index.html" class="mobile-logo">
                         Barber<span>Flow</span>
@@ -180,6 +211,7 @@
                 </div>
 
                 <form id="register-form" novalidate>
+
                     <!-- ETAPA 1 -->
                     <section
                         class="form-step active"
@@ -198,6 +230,7 @@
                         </div>
 
                         <div class="form-grid">
+
                             <div class="form-group form-group-full">
                                 <label for="owner-name">
                                     Seu nome
@@ -270,6 +303,7 @@
 
                                 <small class="field-error"></small>
                             </div>
+
                         </div>
                     </section>
 
@@ -291,6 +325,7 @@
                         </div>
 
                         <div class="form-grid">
+
                             <div class="form-group form-group-full">
                                 <label for="barbershop-name">
                                     Nome da barbearia
@@ -423,6 +458,7 @@
 
                                 <small class="field-error"></small>
                             </div>
+
                         </div>
                     </section>
 
@@ -439,8 +475,8 @@
                                 <h2>O que você oferece?</h2>
 
                                 <p>
-                                    Cadastre o nome, preço e tempo necessário
-                                    para realizar cada atendimento.
+                                    Cadastre o nome, preço e duração
+                                    de cada serviço.
                                 </p>
                             </div>
 
@@ -453,7 +489,10 @@
                             </button>
                         </div>
 
-                        <div id="services-list" class="dynamic-list"></div>
+                        <div
+                            id="services-list"
+                            class="dynamic-list"
+                        ></div>
 
                         <small
                             class="section-error"
@@ -471,11 +510,11 @@
                             <div>
                                 <span>Profissionais</span>
 
-                                <h2>Quem atende na barbearia?</h2>
+                                <h2>Quem trabalha na barbearia?</h2>
 
                                 <p>
                                     Adicione você e os outros profissionais.
-                                    As fotos serão adicionadas na etapa de imagens.
+                                    As fotos serão adicionadas depois.
                                 </p>
                             </div>
 
@@ -512,7 +551,7 @@
 
                             <p>
                                 O sistema utilizará esses horários para
-                                organizar a agenda e evitar conflitos.
+                                organizar os agendamentos da barbearia.
                             </p>
                         </div>
 
@@ -536,15 +575,16 @@
                         <div class="form-heading">
                             <span>Personalização</span>
 
-                            <h2>Escolha o estilo</h2>
+                            <h2>Escolha o estilo da página</h2>
 
                             <p>
-                                O layout continuará profissional. Apenas as
-                                cores principais e os detalhes serão alterados.
+                                Escolha uma paleta e personalize a cor
+                                utilizada nos botões e detalhes.
                             </p>
                         </div>
 
                         <div class="themes-grid">
+
                             <label class="theme-option active">
                                 <input
                                     type="radio"
@@ -641,6 +681,7 @@
                                 <strong>Sunset</strong>
                                 <small>Laranja e preto</small>
                             </label>
+
                         </div>
 
                         <div class="custom-color-card">
@@ -648,8 +689,8 @@
                                 <strong>Cor personalizada</strong>
 
                                 <p>
-                                    Use uma cor diferente como destaque
-                                    nos botões e elementos da página.
+                                    Escolha a cor principal dos botões,
+                                    links e elementos da sua página.
                                 </p>
                             </div>
 
@@ -679,13 +720,15 @@
                             <h2>Adicione suas imagens</h2>
 
                             <p>
-                                Você pode trocar todas elas depois. Caso não
-                                envie um banner, o BarberFlow criará um
-                                automaticamente usando o nome e as cores escolhidas.
+                                Caso não envie um banner, o BarberFlow criará
+                                um automaticamente com o nome e as cores
+                                escolhidas.
                             </p>
                         </div>
 
                         <div class="image-upload-grid">
+
+                            <!-- LOGO -->
                             <article class="upload-card">
                                 <div class="upload-card-heading">
                                     <div>
@@ -698,7 +741,7 @@
 
                                 <p>
                                     Recomendamos uma imagem quadrada em
-                                    PNG ou JPG.
+                                    PNG, JPG ou WEBP.
                                 </p>
 
                                 <label class="upload-area logo-upload-area">
@@ -713,6 +756,7 @@
                                         id="logo-preview"
                                     >
                                         <span id="logo-fallback">SB</span>
+
                                         <img
                                             id="logo-preview-image"
                                             alt="Prévia da logo"
@@ -734,6 +778,7 @@
                                 </button>
                             </article>
 
+                            <!-- BANNER -->
                             <article class="upload-card banner-upload-card">
                                 <div class="upload-card-heading">
                                     <div>
@@ -745,8 +790,8 @@
                                 </div>
 
                                 <p>
-                                    Utilize uma imagem horizontal. Sem uma
-                                    imagem, o banner será gerado automaticamente.
+                                    Utilize uma imagem horizontal ou use
+                                    o banner criado automaticamente.
                                 </p>
 
                                 <label class="upload-area banner-upload-area">
@@ -795,8 +840,10 @@
                                     Usar banner automático
                                 </button>
                             </article>
+
                         </div>
 
+                        <!-- GALERIA -->
                         <div class="gallery-upload-section">
                             <div class="gallery-heading">
                                 <div>
@@ -805,8 +852,8 @@
                                     <h3>Fotos dos trabalhos e do espaço</h3>
 
                                     <p>
-                                        Adicione cortes, cadeiras, recepção,
-                                        ambiente e outros detalhes.
+                                        Adicione cortes, ambiente, recepção,
+                                        cadeiras e outros detalhes.
                                     </p>
                                 </div>
 
@@ -826,19 +873,25 @@
                                 class="gallery-preview-grid"
                                 id="gallery-preview-grid"
                             >
-                                <div class="empty-gallery" id="empty-gallery">
+                                <div
+                                    class="empty-gallery"
+                                    id="empty-gallery"
+                                >
                                     <span>+</span>
 
-                                    <strong>Nenhuma foto adicionada</strong>
+                                    <strong>
+                                        Nenhuma foto adicionada
+                                    </strong>
 
                                     <p>
-                                        A galeria ficará escondida na página
+                                        A galeria não aparecerá na página
                                         enquanto não houver imagens.
                                     </p>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- FOTOS DA EQUIPE -->
                         <div class="professionals-images-section">
                             <div class="gallery-heading">
                                 <div>
@@ -847,8 +900,8 @@
                                     <h3>Fotos dos profissionais</h3>
 
                                     <p>
-                                        Caso não adicione uma foto, será
-                                        exibido um avatar com as iniciais.
+                                        Sem uma foto, será utilizado um
+                                        avatar com as iniciais do profissional.
                                     </p>
                                 </div>
                             </div>
@@ -872,12 +925,12 @@
                             <h2>Escolha seu link e assinatura</h2>
 
                             <p>
-                                O BarberFlow possui um único plano completo.
-                                Todos recebem os mesmos recursos. A diferença
-                                está apenas na forma de pagamento.
+                                Tenha uma página profissional personalizada
+                                e acesso às ferramentas de gestão do BarberFlow.
                             </p>
                         </div>
 
+                        <!-- LINK -->
                         <div class="slug-card">
                             <label for="barbershop-slug">
                                 Link da sua barbearia
@@ -902,20 +955,96 @@
                             </div>
                         </div>
 
+                        <!-- EXPLICAÇÃO -->
                         <div class="plan-explanation">
-                            <span>Plano BarberFlow</span>
+                            <span>BarberFlow completo</span>
 
-                            <h3>Como funciona a assinatura?</h3>
+                            <h3>Um único plano com todos os recursos</h3>
 
                             <p>
-                                Nos dois formatos você recebe agenda,
-                                gestão de clientes, cadastro de serviços,
-                                equipe, página profissional, link exclusivo,
-                                personalização e todas as atualizações do sistema.
+                                Você recebe uma página profissional personalizada
+                                com logo, banner, cores, fotos, serviços,
+                                profissionais, endereço e agendamento online.
+                            </p>
+
+                            <p>
+                                Também terá acesso ao painel para administrar
+                                agenda, clientes, equipe, serviços e as
+                                informações da barbearia.
                             </p>
                         </div>
 
+                        <!-- RECURSOS -->
+                        <div class="included-features">
+
+                            <article>
+                                <span>✓</span>
+
+                                <div>
+                                    <strong>Página personalizada</strong>
+
+                                    <p>
+                                        Logo, cores, fotos e identidade
+                                        da sua barbearia.
+                                    </p>
+                                </div>
+                            </article>
+
+                            <article>
+                                <span>✓</span>
+
+                                <div>
+                                    <strong>Agendamento online</strong>
+
+                                    <p>
+                                        Seus clientes poderão escolher
+                                        serviço, profissional e horário.
+                                    </p>
+                                </div>
+                            </article>
+
+                            <article>
+                                <span>✓</span>
+
+                                <div>
+                                    <strong>Painel de gestão</strong>
+
+                                    <p>
+                                        Controle agenda, clientes,
+                                        equipe e serviços.
+                                    </p>
+                                </div>
+                            </article>
+
+                            <article>
+                                <span>✓</span>
+
+                                <div>
+                                    <strong>Link exclusivo</strong>
+
+                                    <p>
+                                        Divulgue sua página no Instagram,
+                                        WhatsApp e redes sociais.
+                                    </p>
+                                </div>
+                            </article>
+
+                        </div>
+
+                        <div class="billing-heading">
+                            <span>Escolha como pagar</span>
+
+                            <h3>Mensal ou anual</h3>
+
+                            <p>
+                                Os dois formatos possuem os mesmos recursos.
+                                A diferença está apenas no período de cobrança.
+                            </p>
+                        </div>
+
+                        <!-- PLANOS -->
                         <div class="plan-selection">
+
                             <label class="plan-option">
                                 <input
                                     type="radio"
@@ -927,22 +1056,21 @@
                                 <span class="radio-mark"></span>
 
                                 <div class="plan-content">
-                                    <strong>Plano mensal</strong>
+                                    <strong>Pagamento mensal</strong>
 
                                     <p>
-                                        Você paga R$ 22,90 e sua assinatura
-                                        é renovada a cada mês. Essa opção possui
-                                        um valor inicial menor e pode ser cancelada
-                                        antes da próxima renovação.
+                                        Pague mês a mês e utilize todos
+                                        os recursos do BarberFlow enquanto
+                                        sua assinatura estiver ativa.
                                     </p>
 
                                     <small>
-                                        Todos os recursos estão incluídos.
+                                        Renovação mensal
                                     </small>
                                 </div>
 
                                 <span class="plan-price">
-                                    <strong>R$ 22,90</strong>
+                                    <strong>R$ 34,90</strong>
                                     <small>por mês</small>
                                 </span>
                             </label>
@@ -961,98 +1089,67 @@
                                 <span class="radio-mark"></span>
 
                                 <div class="plan-content">
-                                    <strong>Plano anual</strong>
+                                    <strong>Pagamento anual</strong>
 
                                     <p>
-                                        Você realiza um único pagamento de
-                                        R$ 229,90 e utiliza o BarberFlow por
-                                        12 meses. O valor final fica menor do
-                                        que pagar mensalmente durante um ano.
+                                        Faça um único pagamento e tenha
+                                        acesso ao BarberFlow durante 12 meses.
                                     </p>
 
                                     <small>
-                                        Economia de R$ 44,90 no período.
+                                        Economize R$ 68,90 no ano
                                     </small>
                                 </div>
 
                                 <span class="plan-price">
-                                    <strong>R$ 229,90</strong>
+                                    <strong>R$ 349,90</strong>
                                     <small>por ano</small>
                                 </span>
                             </label>
+
                         </div>
 
-                        <div class="professional-setup">
-                            <div class="professional-setup-heading">
-                                <span>Serviço opcional</span>
-
-                                <h3>Configuração profissional</h3>
-
-                                <p>
-                                    Está sem tempo ou prefere não configurar
-                                    sozinho? Envie as informações e imagens
-                                    da barbearia e nossa equipe fará a primeira
-                                    configuração para você.
-                                </p>
-                            </div>
-
-                            <label class="setup-option">
-                                <input
-                                    type="checkbox"
-                                    id="professional-setup"
-                                >
-
-                                <span class="checkbox-mark"></span>
-
-                                <div>
-                                    <strong>
-                                        Quero a configuração profissional
-                                    </strong>
-
-                                    <p>
-                                        Organizaremos informações, serviços,
-                                        equipe, horários, fotos e aparência.
-                                        Depois, você poderá editar tudo pelo painel.
-                                    </p>
-                                </div>
-
-                                <span class="setup-price">
-                                    + R$ 29,90
-                                </span>
-                            </label>
-
-                            <div class="setup-information">
-                                <article>
-                                    <strong>Pagamento único</strong>
-                                    <p>Não será cobrado todos os meses.</p>
-                                </article>
-
-                                <article>
-                                    <strong>Primeira configuração</strong>
-                                    <p>O serviço cobre a montagem inicial.</p>
-                                </article>
-
-                                <article>
-                                    <strong>Edição liberada</strong>
-                                    <p>Depois você altera tudo sozinho.</p>
-                                </article>
-                            </div>
-                        </div>
-
+                        <!-- RESUMO -->
                         <div class="order-summary">
                             <div>
-                                <span>Assinatura</span>
-                                <strong id="summary-plan">Plano mensal</strong>
+                                <span>Plano escolhido</span>
+
+                                <strong id="summary-plan">
+                                    Pagamento mensal
+                                </strong>
                             </div>
 
                             <div>
-                                <span>Configuração profissional</span>
-                                <strong id="summary-setup">Não adicionada</strong>
+                                <span>Recursos incluídos</span>
+
+                                <strong>
+                                    BarberFlow completo
+                                </strong>
                             </div>
 
                             <div class="order-total">
                                 <span>Total inicial</span>
-                                <strong id="summary-total">R$ 22,90</strong>
+
+                                <strong id="summary-total">
+                                    R$ 34,90
+                                </strong>
+                            </div>
+                        </div>
+
+                        <div class="personalization-notice">
+                            <div class="personalization-notice-icon">
+                                BF
+                            </div>
+
+                            <div>
+                                <strong>
+                                    Sua página será criada personalizada
+                                </strong>
+
+                                <p>
+                                    As cores, imagens, serviços e informações
+                                    escolhidas serão aplicadas automaticamente.
+                                </p>
                             </div>
                         </div>
 
@@ -1073,6 +1170,7 @@
                         ></small>
                     </section>
 
+                    <!-- NAVEGAÇÃO -->
                     <div class="form-navigation">
                         <button
                             type="button"
@@ -1100,11 +1198,13 @@
                             Criar minha barbearia
                         </button>
                     </div>
+
                 </form>
             </div>
         </section>
     </main>
 
+    <!-- MODAL DE SUCESSO -->
     <div
         class="success-modal"
         id="success-modal"
@@ -1118,19 +1218,19 @@
             <h2>Sua barbearia foi criada!</h2>
 
             <p>
-                As informações foram salvas neste navegador
-                para testarmos o funcionamento da plataforma.
+                Sua página profissional personalizada foi criada
+                com as informações escolhidas durante o cadastro.
             </p>
 
             <div class="success-checks">
                 <div>
                     <span>✓</span>
-                    Página criada
+                    Página personalizada criada
                 </div>
 
                 <div>
                     <span>✓</span>
-                    Informações salvas
+                    Dados da barbearia salvos
                 </div>
 
                 <div>
