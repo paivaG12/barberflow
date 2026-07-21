@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Crie sua conta no BarberFlow e configure sua barbearia."
+    >
+
+    <title>Criar conta | BarberFlow</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/auth.css">
+
+    <script src="../js/theme.js" defer></script>
+    <script src="../js/cadastro.js" defer></script>
+</head>
+
+<body>
+    <header class="auth-header">
+        <div class="auth-header-content">
+            <a href="../index.html" class="logo">
+                Barber<span>Flow</span>
+            </a>
+
+            <div class="auth-header-actions">
+                <span>Já possui uma conta?</span>
+
+                <a href="./login.html">
+                    Entrar
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="register-page">
+        <section class="register-sidebar">
+            <div class="register-sidebar-content">
+                <a href="../index.html" class="sidebar-logo">
+                    Barber<span>Flow</span>
+                </a>
+
+                <div class="sidebar-introduction">
+                    <span class="sidebar-label">
+                        Configuração inicial
+                    </span>
+
+                    <h1>
+                        Sua barbearia pronta em poucos minutos.
+                    </h1>
+
+                    <p>
+                        Preencha as informações e o BarberFlow criará
+                        sua página profissional e seu painel de gestão.
+                    </p>
+                </div>
+
+                <div class="sidebar-benefits">
+                    <article>
+                        <span>01</span>
+
+                        <div>
+                            <strong>Cadastro simples</strong>
+
+                            <p>
+                                Você só precisa responder algumas perguntas.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article>
+                        <span>02</span>
+
+                        <div>
+                            <strong>Página automática</strong>
+
+                            <p>
+                                Seu site será montado com as informações enviadas.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article>
+                        <span>03</span>
+
+                        <div>
+                            <strong>Link exclusivo</strong>
+
+                            <p>
+                                Compartilhe sua página com os clientes.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+
+                <p class="sidebar-footer-text">
+                    Você poderá editar tudo novamente pelo painel.
+                </p>
+            </div>
+        </section>
+
+        <section class="register-content">
+            <div class="register-container">
+                <div class="mobile-logo">
+                    <a href="../index.html" class="logo">
+                        Barber<span>Flow</span>
+                    </a>
+                </div>
+
+                <div class="register-progress">
+                    <div class="progress-information">
+                        <span id="progress-step">
+                            Etapa 1 de 7
+                        </span>
+
+                        <strong id="progress-title">
+                            Sua conta
+                        </strong>
+                    </div>
+
+                    <div class="progress-bar">
+                        <span id="progress-fill"></span>
+                    </div>
+                </div>
+
+                <form id="register-form" novalidate>
+                    <!-- ETAPA 1 -->
+                    <section
+                        class="form-step active"
+                        data-step="1"
+                        data-title="Sua conta"
+                    >
+                        <div class="form-heading">
+                            <span>Vamos começar</span>
+
+                            <h2>Crie sua conta</h2>
+
+                            <p>
+                                Estes dados serão utilizados para acessar
+                                o painel da sua barbearia.
+                            </p>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group form-group-full">
+                                <label for="owner-name">
+                                    Seu nome
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="owner-name"
+                                    name="ownerName"
+                                    placeholder="Exemplo: João Silva"
+                                    autocomplete="name"
+                                    required
+                                >
+
+                                <small class="field-error"></small>
+                            </div>
+
+                            <div class="form-group form-group-full">
+                                <label for="owner-email">
+                                    E-mail
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="owner-email"
+                                    name="ownerEmail"
+                                    placeholder="voce@email.com"
+                                    autocomplete="email"
+                                    required
+                                >
+
+                                <small class="field-error"></small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="owner-phone">
+                                    WhatsApp
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="owner-phone"
+                                    name="ownerPhone"
+                                    placeholder="(81) 99999-9999"
+                                    autocomplete="tel"
+                                    maxlength="15"
+                                    required
+                                >
+
+                                <small class="field-error"></small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="owner-password">
+                                    Senha
+                                </label>
+
+                                <div class="password-field">
+                                    <input
+                                        type="password"
+                                        id="owner-password"
+                                        name="ownerPassword"
+                                        placeholder="Mínimo de 6 caracteres"
+                                        autocomplete="new-password"
+                                        minlength="6"
+                                        required
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="password-toggle"
+                                        data-password-target="owner-password"
+                                        aria-label="Mostrar senha"
+                                    >
+                                        Mostrar
+                                    </button>
+                                </div>
+
+                                <small class="field-error"></small>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- ETAPA 2 -->
+                    <section
+                        class="form-step"
+                        data-step="2"
+                        data-title="Sua barbearia"
+                    >
+                        <div class="form-heading">
+                            <span>Informações principais</span>
+
+                            <h2>Conte sobre sua barbearia</h2>
+
+                            <p>
+                                Estas informações aparecerão na página
+                                pública da sua barbearia.
+                            </p>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group form-group-full">
+                                <label for="barbershop-name">
+                                    Nome da barbearia
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="barbershop-name"
+                                    name="barbershopName"
+                                    placeholder="Exemplo: Central Barber"
+                                    required
+                                >
+
+                                <small class="field-error"></small>
+                            </div>
+
+                            <div class="form-group form-group-full">
+                                <label for="barbershop-description">
+                                    Descrição
+                                </label>
+
+                                <textarea
+                                    id="barbershop-description"
+                                    name="barbershopDescription"
+                                    rows="4"
+                                    maxlength="240"
+                                    placeholder="Conte um pouco sobre sua barbearia..."
+                                    required
+                                ></textarea>
+
+                                <div class="textarea-information">
+                                    <small class="field-error"></small>
+
+                                    <span id="description-counter">
+                                        0/240
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="barbershop-city">
+                                    Cidade
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="barbershop-city"
+                                    name="barbershopCity"
+                                    placeholder="Exemplo: Recife"
+                                    required
+                                >
+
+                                <small class="field-error"></small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="barbershop-state">
+                                    Estado
+                                </label>
+
+                                <select
+                                    id="barbershop-state"
+                                    name="barbershopState"
+                                    required
+                                >
+                                    <option value="">
+                                        Selecione
+                                    </option>
+
+                                    <option value="AC">AC</option>
+                                    <option value="AL">AL</option>
+                                    <option value="AP">AP</option>
+                                    <option value="AM">AM</option>
+                                    <option value="BA">BA</option>
+                                    <option value="CE">CE</option>
+                                    <option value="DF">DF</option>
+                                    <option value="ES">ES</option>
+                                    <option value="GO">GO</option>
+                                    <option value="MA">MA</option>
+                                    <option value="MT">MT</option>
+                                    <option value="MS">MS</option>
+                                    <option value="MG">MG</option>
+                                    <option value="PA">PA</option>
+                                    <option value="PB">PB</option>
+                                    <option value="PR">PR</option>
+                                    <option value="PE">PE</option>
+                                    <option value="PI">PI</option>
+                                    <option value="RJ">RJ</option>
+                                    <option value="RN">RN</option>
+                                    <option value="RS">RS</option>
+                                    <option value="RO">RO</option>
+                                    <option value="RR">RR</option>
+                                    <option value="SC">SC</option>
+                                    <option value="SP">SP</option>
+                                    <option value="SE">SE</option>
+                                    <option value="TO">TO</option>
+                                </select>
+
+                                <small class="field-error"></small>
+                            </div>
+
+                            <div class="form-group form-group-full">
+                                <label for="barbershop-address">
+                                    Endereço
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="barbershop-address"
+                                    name="barbershopAddress"
+                                    placeholder="Rua, número e bairro"
+                                    required
+                                >
+
+                                <small class="field-error"></small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="barbershop-instagram">
+                                    Instagram
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="barbershop-instagram"
+                                    name="barbershopInstagram"
+                                    placeholder="@suabarbearia"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="barbershop-whatsapp">
+                                    WhatsApp da barbearia
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="barbershop-whatsapp"
+                                    name="barbershopWhatsapp"
+                                    placeholder="(81) 99999-9999"
+                                    maxlength="15"
+                                    required
+                                >
+
+                                <small class="field-error"></small>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- ETAPA 3 -->
+                    <section
+                        class="form-step"
+                        data-step="3"
+                        data-title="Serviços"
+                    >
+                        <div class="form-heading form-heading-with-action">
+                            <div>
+                                <span>Serviços e preços</span>
+
+                                <h2>O que sua barbearia oferece?</h2>
+
+                                <p>
+                                    Adicione pelo menos um serviço.
+                                    Você poderá editar depois.
+                                </p>
+                            </div>
+
+                            <button
+                                type="button"
+                                class="small-action-button"
+                                id="add-service-button"
+                            >
+                                + Adicionar serviço
+                            </button>
+                        </div>
+
+                        <div
+                            class="dynamic-list"
+                            id="services-list"
+                        ></div>
+
+                        <small
+                            class="section-error"
+                            id="services-error"
+                        ></small>
+                    </section>
+
+                    <!-- ETAPA 4 -->
+                    <section
+                        class="form-step"
+                        data-step="4"
+                        data-title="Equipe"
+                    >
+                        <div class="form-heading form-heading-with-action">
+                            <div>
+                                <span>Profissionais</span>
+
+                                <h2>Quem trabalha na barbearia?</h2>
+
+                                <p>
+                                    Você pode adicionar somente você
+                                    ou cadastrar outros barbeiros.
+                                </p>
+                            </div>
+
+                            <button
+                                type="button"
+                                class="small-action-button"
+                                id="add-professional-button"
+                            >
+                                + Adicionar profissional
+                            </button>
+                        </div>
+
+                        <div
+                            class="dynamic-list"
+                            id="professionals-list"
+                        ></div>
+
+                        <small
+                            class="section-error"
+                            id="professionals-error"
+                        ></small>
+                    </section>
+
+                    <!-- ETAPA 5 -->
+                    <section
+                        class="form-step"
+                        data-step="5"
+                        data-title="Horários"
+                    >
+                        <div class="form-heading">
+                            <span>Funcionamento</span>
+
+                            <h2>Escolha os dias e horários</h2>
+
+                            <p>
+                                Esses horários serão usados para organizar
+                                a agenda e mostrar disponibilidade.
+                            </p>
+                        </div>
+
+                        <div
+                            class="schedule-list"
+                            id="schedule-list"
+                        ></div>
+
+                        <small
+                            class="section-error"
+                            id="schedule-error"
+                        ></small>
+                    </section>
+
+                    <!-- ETAPA 6 -->
+                    <section
+                        class="form-step"
+                        data-step="6"
+                        data-title="Aparência"
+                    >
+                        <div class="form-heading">
+                            <span>Personalização</span>
+
+                            <h2>Escolha o estilo da página</h2>
+
+                            <p>
+                                A estrutura permanece profissional.
+                                Apenas as cores principais serão alteradas.
+                            </p>
+                        </div>
+
+                        <div class="themes-grid">
+                            <label class="theme-option active">
+                                <input
+                                    type="radio"
+                                    name="theme"
+                                    value="legacy"
+                                    checked
+                                >
+
+                                <span class="theme-preview">
+                                    <span style="background: #111111;"></span>
+                                    <span style="background: #d6aa45;"></span>
+                                </span>
+
+                                <strong>Legacy</strong>
+                                <small>Preto e dourado</small>
+                            </label>
+
+                            <label class="theme-option">
+                                <input
+                                    type="radio"
+                                    name="theme"
+                                    value="urban"
+                                >
+
+                                <span class="theme-preview">
+                                    <span style="background: #151515;"></span>
+                                    <span style="background: #f5f5f5;"></span>
+                                </span>
+
+                                <strong>Urban</strong>
+                                <small>Preto e branco</small>
+                            </label>
+
+                            <label class="theme-option">
+                                <input
+                                    type="radio"
+                                    name="theme"
+                                    value="ocean"
+                                >
+
+                                <span class="theme-preview">
+                                    <span style="background: #152747;"></span>
+                                    <span style="background: #d6aa45;"></span>
+                                </span>
+
+                                <strong>Ocean</strong>
+                                <small>Azul e dourado</small>
+                            </label>
+
+                            <label class="theme-option">
+                                <input
+                                    type="radio"
+                                    name="theme"
+                                    value="forest"
+                                >
+
+                                <span class="theme-preview">
+                                    <span style="background: #214c3a;"></span>
+                                    <span style="background: #101010;"></span>
+                                </span>
+
+                                <strong>Forest</strong>
+                                <small>Verde e preto</small>
+                            </label>
+
+                            <label class="theme-option">
+                                <input
+                                    type="radio"
+                                    name="theme"
+                                    value="royal"
+                                >
+
+                                <span class="theme-preview">
+                                    <span style="background: #611f35;"></span>
+                                    <span style="background: #171717;"></span>
+                                </span>
+
+                                <strong>Royal</strong>
+                                <small>Vinho e preto</small>
+                            </label>
+
+                            <label class="theme-option">
+                                <input
+                                    type="radio"
+                                    name="theme"
+                                    value="sunset"
+                                >
+
+                                <span class="theme-preview">
+                                    <span style="background: #e26d2f;"></span>
+                                    <span style="background: #171717;"></span>
+                                </span>
+
+                                <strong>Sunset</strong>
+                                <small>Laranja e preto</small>
+                            </label>
+                        </div>
+
+                        <div class="custom-color-box">
+                            <div>
+                                <strong>Cor personalizada</strong>
+
+                                <p>
+                                    Escolha uma cor principal diferente.
+                                </p>
+                            </div>
+
+                            <label class="color-input-label">
+                                <input
+                                    type="color"
+                                    id="custom-color"
+                                    name="customColor"
+                                    value="#d6aa45"
+                                >
+
+                                <span id="custom-color-value">
+                                    #D6AA45
+                                </span>
+                            </label>
+                        </div>
+                    </section>
+
+                    <!-- ETAPA 7 -->
+                    <section
+                        class="form-step"
+                        data-step="7"
+                        data-title="Link e plano"
+                    >
+                        <div class="form-heading">
+                            <span>Última etapa</span>
+
+                            <h2>Escolha seu link e forma de pagamento</h2>
+
+                            <p>
+                                O pagamento ainda será simulado nesta versão.
+                            </p>
+                        </div>
+
+                        <div class="slug-section">
+                            <label for="barbershop-slug">
+                                Link da sua barbearia
+                            </label>
+
+                            <div class="slug-field">
+                                <span>
+                                    barberflow.com/
+                                </span>
+
+                                <input
+                                    type="text"
+                                    id="barbershop-slug"
+                                    name="barbershopSlug"
+                                    placeholder="sua-barbearia"
+                                    required
+                                >
+                            </div>
+
+                            <div
+                                class="slug-status available"
+                                id="slug-status"
+                            >
+                                Link disponível
+                            </div>
+
+                            <small class="field-error"></small>
+                        </div>
+
+                        <div class="plan-selection">
+                            <label class="plan-option">
+                                <input
+                                    type="radio"
+                                    name="billing"
+                                    value="monthly"
+                                    checked
+                                >
+
+                                <span class="radio-mark"></span>
+
+                                <div>
+                                    <strong>Plano mensal</strong>
+
+                                    <p>
+                                        Cancele quando quiser.
+                                    </p>
+                                </div>
+
+                                <span class="plan-price">
+                                    <strong>R$ 22,90</strong>
+                                    <small>/mês</small>
+                                </span>
+                            </label>
+
+                            <label class="plan-option featured">
+                                <div class="plan-badge">
+                                    Melhor escolha
+                                </div>
+
+                                <input
+                                    type="radio"
+                                    name="billing"
+                                    value="annual"
+                                >
+
+                                <span class="radio-mark"></span>
+
+                                <div>
+                                    <strong>Plano anual</strong>
+
+                                    <p>
+                                        Economize pagando uma vez por ano.
+                                    </p>
+                                </div>
+
+                                <span class="plan-price">
+                                    <strong>R$ 229,90</strong>
+                                    <small>/ano</small>
+                                </span>
+                            </label>
+                        </div>
+
+                        <div class="professional-setup">
+                            <label class="setup-checkbox">
+                                <input
+                                    type="checkbox"
+                                    id="professional-setup"
+                                    name="professionalSetup"
+                                >
+
+                                <span class="checkbox-mark"></span>
+
+                                <div>
+                                    <strong>
+                                        Quero a configuração profissional
+                                    </strong>
+
+                                    <p>
+                                        Nossa equipe configura informações,
+                                        serviços, horários, fotos e aparência.
+                                    </p>
+                                </div>
+
+                                <span class="setup-value">
+                                    + R$ 29,90
+                                </span>
+                            </label>
+                        </div>
+
+                        <div class="order-summary">
+                            <div>
+                                <span>Assinatura</span>
+
+                                <strong id="summary-plan">
+                                    Plano mensal
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>Configuração profissional</span>
+
+                                <strong id="summary-setup">
+                                    Não adicionada
+                                </strong>
+                            </div>
+
+                            <div class="order-total">
+                                <span>Total inicial</span>
+
+                                <strong id="summary-total">
+                                    R$ 22,90
+                                </strong>
+                            </div>
+                        </div>
+
+                        <label class="terms-checkbox">
+                            <input
+                                type="checkbox"
+                                id="terms"
+                                required
+                            >
+
+                            <span class="checkbox-mark"></span>
+
+                            <p>
+                                Concordo com os termos de uso e com a
+                                política de privacidade do BarberFlow.
+                            </p>
+                        </label>
+
+                        <small
+                            class="section-error"
+                            id="terms-error"
+                        ></small>
+                    </section>
+
+                    <div class="form-navigation">
+                        <button
+                            type="button"
+                            class="navigation-button navigation-back"
+                            id="back-button"
+                            disabled
+                        >
+                            Voltar
+                        </button>
+
+                        <button
+                            type="button"
+                            class="navigation-button navigation-next"
+                            id="next-button"
+                        >
+                            Continuar
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="navigation-button navigation-finish"
+                            id="finish-button"
+                            hidden
+                        >
+                            Criar minha barbearia
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <div
+        class="success-modal"
+        id="success-modal"
+        aria-hidden="true"
+    >
+        <div class="success-modal-card">
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <span>Cadastro concluído</span>
+
+            <h2>Sua barbearia foi criada!</h2>
+
+            <p>
+                Nesta versão, as informações foram salvas no seu navegador.
+            </p>
+
+            <div class="created-link">
+                <small>Seu link</small>
+
+                <strong id="created-link-text">
+                    barberflow.com/sua-barbearia
+                </strong>
+            </div>
+
+            <div class="success-actions">
+                <a
+                    href="./barbearia.html?barbearia=demo"
+                    class="success-primary"
+                    id="open-created-page"
+                >
+                    Abrir minha página
+                </a>
+
+                <a
+                    href="../index.html"
+                    class="success-secondary"
+                >
+                    Voltar ao início
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
