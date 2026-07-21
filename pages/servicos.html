@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Gerencie os serviços da sua barbearia no BarberFlow."
+    >
+
+    <title>Serviços | BarberFlow</title>
+
+    <link rel="stylesheet" href="../css/checkout.css">
+
+    <script src="../js/painel.js" defer></script>
+</head>
+
+<body data-dashboard-page="services">
+    <div class="dashboard-layout">
+        <aside class="dashboard-sidebar">
+            <a href="../index.html" class="checkout-logo">
+                Barber<span>Flow</span>
+            </a>
+
+            <nav class="dashboard-navigation">
+                <a href="./painel.html">
+                    <span>⌂</span>
+                    Visão geral
+                </a>
+
+                <a href="#">
+                    <span>□</span>
+                    Agenda
+                </a>
+
+                <a href="#">
+                    <span>♙</span>
+                    Clientes
+                </a>
+
+                <a href="./servicos.html" class="active">
+                    <span>✂</span>
+                    Serviços
+                </a>
+
+                <a href="#">
+                    <span>♚</span>
+                    Equipe
+                </a>
+
+                <a href="#">
+                    <span>↗</span>
+                    Minha página
+                </a>
+            </nav>
+
+            <div class="dashboard-sidebar-footer">
+                <span>Plano ativo</span>
+
+                <strong id="sidebar-plan">
+                    BarberFlow mensal
+                </strong>
+            </div>
+        </aside>
+
+        <main class="dashboard-main services-dashboard-main">
+            <header class="dashboard-header">
+                <div>
+                    <span>Gerenciamento</span>
+
+                    <h1>Serviços</h1>
+                </div>
+
+                <div class="dashboard-header-actions">
+                    <a
+                        href="./barbearia.html"
+                        class="dashboard-preview-link"
+                        id="open-shop-page"
+                        target="_blank"
+                    >
+                        Ver minha página
+                    </a>
+
+                    <button
+                        type="button"
+                        class="dashboard-add-button"
+                        id="open-service-modal"
+                    >
+                        <span>+</span>
+                        Novo serviço
+                    </button>
+
+                    <div
+                        class="dashboard-user"
+                        id="dashboard-owner-avatar"
+                    >
+                        BF
+                    </div>
+                </div>
+            </header>
+
+            <section class="services-introduction">
+                <div>
+                    <span>Catálogo de serviços</span>
+
+                    <h2>
+                        Organize o que sua barbearia oferece
+                    </h2>
+
+                    <p>
+                        Adicione preços, duração e controle quais serviços
+                        aparecem para os clientes durante o agendamento.
+                    </p>
+                </div>
+
+                <div class="services-summary">
+                    <article>
+                        <span>Total</span>
+
+                        <strong id="total-services">
+                            0
+                        </strong>
+
+                        <small>serviços cadastrados</small>
+                    </article>
+
+                    <article>
+                        <span>Ativos</span>
+
+                        <strong id="active-services">
+                            0
+                        </strong>
+
+                        <small>visíveis para clientes</small>
+                    </article>
+
+                    <article>
+                        <span>Preço médio</span>
+
+                        <strong id="average-service-price">
+                            R$ 0,00
+                        </strong>
+
+                        <small>entre os serviços</small>
+                    </article>
+                </div>
+            </section>
+
+            <section class="services-control-card">
+                <div class="services-filters">
+                    <div class="services-search">
+                        <span>⌕</span>
+
+                        <input
+                            type="search"
+                            id="services-search"
+                            placeholder="Pesquisar serviço..."
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <select id="services-status-filter">
+                        <option value="all">
+                            Todos os serviços
+                        </option>
+
+                        <option value="active">
+                            Apenas ativos
+                        </option>
+
+                        <option value="inactive">
+                            Apenas desativados
+                        </option>
+                    </select>
+                </div>
+
+                <div class="services-table-header">
+                    <span>Serviço</span>
+                    <span>Duração</span>
+                    <span>Preço</span>
+                    <span>Status</span>
+                    <span>Ações</span>
+                </div>
+
+                <div
+                    class="services-list"
+                    id="services-list"
+                ></div>
+
+                <div
+                    class="services-empty-state"
+                    id="services-empty-state"
+                    hidden
+                >
+                    <span>✂</span>
+
+                    <strong>Nenhum serviço encontrado</strong>
+
+                    <p>
+                        Cadastre um serviço ou altere os filtros
+                        utilizados na pesquisa.
+                    </p>
+
+                    <button
+                        type="button"
+                        id="empty-add-service"
+                    >
+                        Adicionar serviço
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- MODAL PARA ADICIONAR OU EDITAR -->
+    <div
+        class="dashboard-modal"
+        id="service-modal"
+        aria-hidden="true"
+    >
+        <div
+            class="dashboard-modal-overlay"
+            id="service-modal-overlay"
+        ></div>
+
+        <section
+            class="dashboard-modal-card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="service-modal-title"
+        >
+            <header class="dashboard-modal-header">
+                <div>
+                    <span id="service-modal-label">
+                        Novo serviço
+                    </span>
+
+                    <h2 id="service-modal-title">
+                        Adicionar serviço
+                    </h2>
+
+                    <p>
+                        Informe os dados que serão exibidos
+                        para os seus clientes.
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    class="dashboard-modal-close"
+                    id="close-service-modal"
+                    aria-label="Fechar janela"
+                >
+                    ×
+                </button>
+            </header>
+
+            <form id="service-form" novalidate>
+                <input
+                    type="hidden"
+                    id="service-id"
+                >
+
+                <div class="service-form-grid">
+                    <div class="service-form-group full">
+                        <label for="service-name">
+                            Nome do serviço
+                        </label>
+
+                        <input
+                            type="text"
+                            id="service-name"
+                            placeholder="Ex.: Corte masculino"
+                            maxlength="70"
+                            required
+                        >
+
+                        <small
+                            class="service-error"
+                            id="service-name-error"
+                        ></small>
+                    </div>
+
+                    <div class="service-form-group">
+                        <label for="service-price">
+                            Preço
+                        </label>
+
+                        <div class="service-input-prefix">
+                            <span>R$</span>
+
+                            <input
+                                type="text"
+                                inputmode="decimal"
+                                id="service-price"
+                                placeholder="35,00"
+                                maxlength="10"
+                                required
+                            >
+                        </div>
+
+                        <small
+                            class="service-error"
+                            id="service-price-error"
+                        ></small>
+                    </div>
+
+                    <div class="service-form-group">
+                        <label for="service-duration">
+                            Duração
+                        </label>
+
+                        <div class="service-input-suffix">
+                            <input
+                                type="number"
+                                id="service-duration"
+                                placeholder="40"
+                                min="5"
+                                max="600"
+                                step="5"
+                                required
+                            >
+
+                            <span>min</span>
+                        </div>
+
+                        <small
+                            class="service-error"
+                            id="service-duration-error"
+                        ></small>
+                    </div>
+
+                    <div class="service-form-group full">
+                        <label for="service-description">
+                            Descrição
+                            <small>Opcional</small>
+                        </label>
+
+                        <textarea
+                            id="service-description"
+                            rows="4"
+                            maxlength="240"
+                            placeholder="Descreva rapidamente o serviço..."
+                        ></textarea>
+
+                        <div class="description-counter">
+                            <span id="description-character-count">
+                                0
+                            </span>/240
+                        </div>
+                    </div>
+
+                    <div class="service-form-group full">
+                        <label class="service-status-option">
+                            <input
+                                type="checkbox"
+                                id="service-active"
+                                checked
+                            >
+
+                            <span class="service-status-switch"></span>
+
+                            <div>
+                                <strong>
+                                    Serviço ativo
+                                </strong>
+
+                                <small>
+                                    Quando ativo, o serviço aparece
+                                    na página pública e no agendamento.
+                                </small>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <footer class="dashboard-modal-footer">
+                    <button
+                        type="button"
+                        class="modal-cancel-button"
+                        id="cancel-service-modal"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="modal-save-button"
+                        id="save-service-button"
+                    >
+                        Salvar serviço
+                    </button>
+                </footer>
+            </form>
+        </section>
+    </div>
+
+    <!-- MODAL DE EXCLUSÃO -->
+    <div
+        class="dashboard-modal"
+        id="delete-service-modal"
+        aria-hidden="true"
+    >
+        <div
+            class="dashboard-modal-overlay"
+            id="delete-modal-overlay"
+        ></div>
+
+        <section
+            class="dashboard-modal-card delete-modal-card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="delete-modal-title"
+        >
+            <div class="delete-modal-icon">
+                !
+            </div>
+
+            <span>Excluir serviço</span>
+
+            <h2 id="delete-modal-title">
+                Tem certeza?
+            </h2>
+
+            <p>
+                O serviço
+                <strong id="delete-service-name"></strong>
+                será excluído. Essa ação não poderá ser desfeita.
+            </p>
+
+            <div class="delete-modal-actions">
+                <button
+                    type="button"
+                    class="modal-cancel-button"
+                    id="cancel-delete-service"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    type="button"
+                    class="modal-delete-button"
+                    id="confirm-delete-service"
+                >
+                    Excluir serviço
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <div
+        class="dashboard-toast"
+        id="dashboard-toast"
+        role="status"
+        aria-live="polite"
+    >
+        <span>✓</span>
+
+        <p id="dashboard-toast-message">
+            Alterações salvas.
+        </p>
+    </div>
+</body>
+</html>
