@@ -1,57 +1,45 @@
-const themeButton = document.querySelector("#theme-button");
-const themeIcon = document.querySelector("#theme-icon");
-
-function getSavedTheme() {
-    return localStorage.getItem("barberflow-theme");
-}
-
-function saveTheme(theme) {
-    localStorage.setItem("barberflow-theme", theme);
-}
+const themeButton = document.getElementById("theme-button");
+const themeIcon = document.getElementById("theme-icon");
 
 function isLightMode() {
     return document.body.classList.contains("light-mode");
 }
 
-function updateThemeIcon() {
+function updateThemeButton() {
     if (isLightMode()) {
         themeIcon.textContent = "☾";
-        themeButton.setAttribute(
-            "aria-label",
-            "Ativar modo escuro"
-        );
-
-        return;
+        themeButton.setAttribute("aria-label", "Ativar modo escuro");
+    } else {
+        themeIcon.textContent = "☀";
+        themeButton.setAttribute("aria-label", "Ativar modo claro");
     }
-
-    themeIcon.textContent = "☀";
-    themeButton.setAttribute(
-        "aria-label",
-        "Ativar modo claro"
-    );
 }
 
-function applySavedTheme() {
-    const savedTheme = getSavedTheme();
+function loadTheme() {
+    const savedTheme = localStorage.getItem("barberflow-theme");
 
     if (savedTheme === "light") {
         document.body.classList.add("light-mode");
+    } else {
+        document.body.classList.remove("light-mode");
     }
 
-    updateThemeIcon();
+    updateThemeButton();
 }
 
-function toggleTheme() {
+function changeTheme() {
     document.body.classList.toggle("light-mode");
 
-    const currentTheme = isLightMode()
-        ? "light"
-        : "dark";
+    const selectedTheme = isLightMode() ? "light" : "dark";
 
-    saveTheme(currentTheme);
-    updateThemeIcon();
+    localStorage.setItem("barberflow-theme", selectedTheme);
+
+    updateThemeButton();
 }
 
-themeButton.addEventListener("click", toggleTheme);
-
-applySavedTheme();
+if (themeButton && themeIcon) {
+    themeButton.addEventListener("click", changeTheme);
+    loadTheme();
+} else {
+    console.error("Botão de tema não encontrado no HTML.");
+}

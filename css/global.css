@@ -727,3 +727,30 @@ body.light-mode .button-secondary {
 body.light-mode .button-secondary:hover {
     background-color: rgba(0, 0, 0, 0.07);
 }
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.theme-button {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background-color: var(--card);
+    color: var(--text);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+body.light-mode .header {
+    background-color: rgba(245, 245, 247, 0.9);
+}
+
+body.light-mode .hero-card {
+    background-color: #ffffff;
+}
