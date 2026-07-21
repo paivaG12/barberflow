@@ -108,7 +108,7 @@
 }
 
 .preview-banner {
-    min-height: 180px;
+    min-height: 190px;
     display: flex;
     align-items: flex-end;
     padding: 24px;
@@ -116,24 +116,34 @@
     background:
         linear-gradient(
             135deg,
-            rgba(245, 185, 66, 0.8),
-            rgba(20, 20, 20, 0.95)
+            rgba(245, 185, 66, 0.88),
+            rgba(20, 20, 20, 0.96)
         );
 }
 
+.preview-banner div {
+    display: flex;
+    flex-direction: column;
+}
+
+.preview-banner small {
+    color: rgba(255, 255, 255, 0.7);
+}
+
 .preview-banner span {
+    color: #ffffff;
     font-size: 1.5rem;
     font-weight: 800;
 }
 
-.preview-cards {
+.preview-shop-info {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
     margin-top: 12px;
 }
 
-.preview-cards div {
+.preview-shop-info div {
     display: flex;
     flex-direction: column;
     padding: 16px;
@@ -142,17 +152,24 @@
     background: var(--background-soft);
 }
 
-.preview-cards small {
+.preview-shop-info small,
+.preview-service small {
     color: var(--text-soft);
 }
 
 .preview-service {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     margin-top: 12px;
     padding: 16px;
     border: 1px solid var(--border);
     border-radius: 16px;
+}
+
+.preview-service div {
+    display: flex;
+    flex-direction: column;
 }
 
 .preview-button {
@@ -173,10 +190,15 @@
     background: var(--background-soft);
 }
 
-.steps-grid,
-.resource-grid {
+.steps-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.resource-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 18px;
 }
 
@@ -195,6 +217,19 @@
     font-weight: 800;
 }
 
+.resource-number {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 45px;
+    border-radius: 13px;
+    background: rgba(245, 185, 66, 0.12);
+    color: var(--primary);
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+
 .step-card h3,
 .resource-card h3 {
     margin-bottom: 10px;
@@ -206,8 +241,210 @@
     font-size: 0.9rem;
 }
 
+.nearby-section {
+    padding: 110px 0;
+}
+
+.nearby-content {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    align-items: center;
+    gap: 80px;
+}
+
+.nearby-text h2 {
+    font-size: clamp(2.3rem, 5vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.055em;
+}
+
+.nearby-text p {
+    max-width: 560px;
+    margin: 22px 0 30px;
+    color: var(--text-soft);
+}
+
+.nearby-list {
+    display: grid;
+    gap: 14px;
+}
+
+.nearby-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--card);
+}
+
+.nearby-logo {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border-radius: 16px;
+    background: var(--primary);
+    color: var(--text-dark);
+    font-weight: 800;
+}
+
+.nearby-info {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.nearby-info span,
+.nearby-info small {
+    color: var(--text-soft);
+}
+
+.nearby-info small {
+    margin-top: 3px;
+}
+
+.nearby-distance {
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text-soft);
+    font-size: 0.75rem;
+}
+
+.pricing-section {
+    padding: 110px 0;
+    background: var(--background-soft);
+}
+
+.pricing-heading {
+    margin-inline: auto;
+    text-align: center;
+}
+
+.pricing-heading p {
+    margin-inline: auto;
+}
+
+.pricing-card {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 42px;
+    border: 1px solid var(--border-light);
+    border-radius: 32px;
+    background: var(--card);
+    box-shadow: var(--shadow);
+}
+
+.pricing-header {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.pricing-badge {
+    display: inline-block;
+    margin-bottom: 18px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(245, 185, 66, 0.12);
+    color: var(--primary);
+    font-size: 0.76rem;
+    font-weight: 800;
+}
+
+.pricing-header h3 {
+    font-size: 2rem;
+    letter-spacing: -0.045em;
+}
+
+.pricing-header p {
+    margin-top: 12px;
+    color: var(--text-soft);
+}
+
+.pricing-choice {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.pricing-option {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 22px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--background-soft);
+}
+
+.pricing-option > span {
+    color: var(--text-soft);
+    font-size: 0.82rem;
+}
+
+.pricing-option strong {
+    margin-top: 8px;
+    font-size: 1.7rem;
+}
+
+.pricing-option small {
+    color: var(--text-soft);
+}
+
+.pricing-option em {
+    margin-top: 12px;
+    color: var(--primary);
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 800;
+}
+
+.pricing-option-featured {
+    border-color: rgba(245, 185, 66, 0.55);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(245, 185, 66, 0.12),
+            rgba(245, 185, 66, 0.03)
+        );
+}
+
+.pricing-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 36px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border);
+}
+
+.pricing-features span {
+    position: relative;
+    padding-left: 22px;
+    color: var(--text-soft);
+    font-size: 0.88rem;
+}
+
+.pricing-features span::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: 800;
+}
+
+.pricing-button {
+    width: 100%;
+    margin-top: 32px;
+}
+
 .platform-cta {
-    padding: 0 0 80px;
+    padding: 80px 0;
 }
 
 .platform-cta-content {
@@ -252,7 +489,9 @@ body.light-mode .platform-cta-content .button-light {
 }
 
 @media (max-width: 950px) {
-    .platform-hero-content {
+    .platform-hero-content,
+    .nearby-content,
+    .pricing-header {
         grid-template-columns: 1fr;
     }
 
@@ -284,14 +523,36 @@ body.light-mode .platform-cta-content .button-light {
         border-radius: 24px;
     }
 
-    .preview-cards,
+    .preview-shop-info,
     .steps-grid,
-    .resource-grid {
+    .resource-grid,
+    .pricing-choice,
+    .pricing-features {
         grid-template-columns: 1fr;
     }
 
-    .platform-section {
+    .platform-section,
+    .nearby-section,
+    .pricing-section {
         padding: 85px 0;
+    }
+
+    .pricing-card {
+        padding: 25px;
+        border-radius: 24px;
+    }
+
+    .nearby-card {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .nearby-distance {
+        margin-left: 68px;
+    }
+
+    .platform-cta {
+        padding: 50px 0;
     }
 
     .platform-cta-content {
