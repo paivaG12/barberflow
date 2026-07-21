@@ -10,24 +10,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const progressTitle = document.querySelector("#progress-title");
     const progressFill = document.querySelector("#progress-fill");
 
-    const servicesList = document.querySelector("#services-list");
-    const professionalsList = document.querySelector("#professionals-list");
-    const scheduleList = document.querySelector("#schedule-list");
+    const progressDots = [
+        ...document.querySelectorAll("[data-progress-dot]")
+    ];
 
-    const addServiceButton = document.querySelector(
-        "#add-service-button"
+    const sidebarSteps = [
+        ...document.querySelectorAll("[data-sidebar-step]")
+    ];
+
+    const servicesList = document.querySelector("#services-list");
+    const professionalsList = document.querySelector(
+        "#professionals-list"
     );
 
-    const addProfessionalButton = document.querySelector(
-        "#add-professional-button"
+    const scheduleList = document.querySelector("#schedule-list");
+
+    const professionalImagesList = document.querySelector(
+        "#professional-images-list"
     );
 
     const barbershopNameInput = document.querySelector(
         "#barbershop-name"
     );
-
-    const slugInput = document.querySelector("#barbershop-slug");
-    const slugStatus = document.querySelector("#slug-status");
 
     const descriptionInput = document.querySelector(
         "#barbershop-description"
@@ -37,7 +41,50 @@ document.addEventListener("DOMContentLoaded", () => {
         "#description-counter"
     );
 
-    const professionalSetup = document.querySelector(
+    const slugInput = document.querySelector("#barbershop-slug");
+    const slugStatus = document.querySelector("#slug-status");
+
+    const customColorInput = document.querySelector("#custom-color");
+    const customColorValue = document.querySelector(
+        "#custom-color-value"
+    );
+
+    const logoInput = document.querySelector("#logo-input");
+    const logoPreviewImage = document.querySelector(
+        "#logo-preview-image"
+    );
+
+    const logoFallback = document.querySelector("#logo-fallback");
+
+    const removeLogoButton = document.querySelector(
+        "#remove-logo-button"
+    );
+
+    const bannerInput = document.querySelector("#banner-input");
+    const bannerPreviewImage = document.querySelector(
+        "#banner-preview-image"
+    );
+
+    const automaticBanner = document.querySelector(
+        "#automatic-banner"
+    );
+
+    const automaticBannerName = document.querySelector(
+        "#automatic-banner-name"
+    );
+
+    const removeBannerButton = document.querySelector(
+        "#remove-banner-button"
+    );
+
+    const galleryInput = document.querySelector("#gallery-input");
+    const galleryPreviewGrid = document.querySelector(
+        "#gallery-preview-grid"
+    );
+
+    const emptyGallery = document.querySelector("#empty-gallery");
+
+    const professionalSetupInput = document.querySelector(
         "#professional-setup"
     );
 
@@ -57,297 +104,67 @@ document.addEventListener("DOMContentLoaded", () => {
         "#open-created-page"
     );
 
-    const customColorInput = document.querySelector("#custom-color");
-    const customColorValue = document.querySelector(
-        "#custom-color-value"
-    );
-
     let currentStep = 1;
-    let serviceCount = 0;
-    let professionalCount = 0;
+    let serviceCounter = 0;
+    let professionalCounter = 0;
     let slugWasEdited = false;
 
+    let logoData = "";
+    let bannerData = "";
+    let galleryImages = [];
+    let professionalImages = {};
+
+    const themes = {
+        legacy: {
+            primary: "#d6aa45",
+            secondary: "#111111"
+        },
+        urban: {
+            primary: "#f5f5f5",
+            secondary: "#151515"
+        },
+        ocean: {
+            primary: "#d6aa45",
+            secondary: "#152747"
+        },
+        forest: {
+            primary: "#4f9b70",
+            secondary: "#173629"
+        },
+        royal: {
+            primary: "#b45878",
+            secondary: "#611f35"
+        },
+        sunset: {
+            primary: "#e26d2f",
+            secondary: "#171717"
+        }
+    };
+
     const days = [
-        { key: "monday", label: "Segunda-feira", active: true },
-        { key: "tuesday", label: "Terça-feira", active: true },
-        { key: "wednesday", label: "Quarta-feira", active: true },
-        { key: "thursday", label: "Quinta-feira", active: true },
-        { key: "friday", label: "Sexta-feira", active: true },
-        { key: "saturday", label: "Sábado", active: true },
-        { key: "sunday", label: "Domingo", active: false }
+        ["monday", "Segunda-feira", true],
+        ["tuesday", "Terça-feira", true],
+        ["wednesday", "Quarta-feira", true],
+        ["thursday", "Quinta-feira", true],
+        ["friday", "Sexta-feira", true],
+        ["saturday", "Sábado", true],
+        ["sunday", "Domingo", false]
     ];
 
-    function updateStep() {
-        steps.forEach((step) => {
-            const stepNumber = Number(step.dataset.step);
+    function getInitials(name) {
+        const words = name
+            .trim()
+            .split(/\s+/)
+            .filter(Boolean)
+            .slice(0, 2);
 
-            step.classList.toggle(
-                "active",
-                stepNumber === currentStep
-            );
-        });
-
-        const activeStep = steps.find(
-            (step) => Number(step.dataset.step) === currentStep
-        );
-
-        progressStep.textContent =
-            `Etapa ${currentStep} de ${steps.length}`;
-
-        progressTitle.textContent =
-            activeStep?.dataset.title || "";
-
-        progressFill.style.width =
-            `${(currentStep / steps.length) * 100}%`;
-
-        backButton.disabled = currentStep === 1;
-
-        nextButton.hidden = currentStep === steps.length;
-        finishButton.hidden = currentStep !== steps.length;
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    }
-
-    function showFieldError(field, message) {
-        const group = field.closest(".form-group");
-
-        if (!group) {
-            return;
+        if (!words.length) {
+            return "SB";
         }
 
-        group.classList.add("invalid");
-
-        const errorElement = group.querySelector(".field-error");
-
-        if (errorElement) {
-            errorElement.textContent = message;
-        }
-    }
-
-    function clearFieldError(field) {
-        const group = field.closest(".form-group");
-
-        if (!group) {
-            return;
-        }
-
-        group.classList.remove("invalid");
-
-        const errorElement = group.querySelector(".field-error");
-
-        if (errorElement) {
-            errorElement.textContent = "";
-        }
-    }
-
-    function validateStandardFields(step) {
-        const requiredFields = [
-            ...step.querySelectorAll("[required]")
-        ].filter((field) => {
-            return field.type !== "checkbox";
-        });
-
-        let isValid = true;
-
-        requiredFields.forEach((field) => {
-            clearFieldError(field);
-
-            const value = field.value.trim();
-
-            if (!value) {
-                showFieldError(field, "Preencha este campo.");
-                isValid = false;
-                return;
-            }
-
-            if (
-                field.type === "email" &&
-                !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
-            ) {
-                showFieldError(field, "Digite um e-mail válido.");
-                isValid = false;
-                return;
-            }
-
-            if (
-                field.id === "owner-password" &&
-                value.length < 6
-            ) {
-                showFieldError(
-                    field,
-                    "A senha deve ter pelo menos 6 caracteres."
-                );
-
-                isValid = false;
-            }
-        });
-
-        return isValid;
-    }
-
-    function validateServices() {
-        const serviceCards = [
-            ...servicesList.querySelectorAll(".service-card")
-        ];
-
-        const servicesError = document.querySelector(
-            "#services-error"
-        );
-
-        if (serviceCards.length === 0) {
-            servicesError.textContent =
-                "Adicione pelo menos um serviço.";
-
-            return false;
-        }
-
-        const hasEmptyField = serviceCards.some((card) => {
-            const requiredInputs = [
-                ...card.querySelectorAll("[required]")
-            ];
-
-            return requiredInputs.some(
-                (input) => !input.value.trim()
-            );
-        });
-
-        if (hasEmptyField) {
-            servicesError.textContent =
-                "Preencha todas as informações dos serviços.";
-
-            return false;
-        }
-
-        servicesError.textContent = "";
-        return true;
-    }
-
-    function validateProfessionals() {
-        const professionalCards = [
-            ...professionalsList.querySelectorAll(
-                ".professional-card"
-            )
-        ];
-
-        const professionalsError = document.querySelector(
-            "#professionals-error"
-        );
-
-        if (professionalCards.length === 0) {
-            professionalsError.textContent =
-                "Adicione pelo menos um profissional.";
-
-            return false;
-        }
-
-        const hasEmptyField = professionalCards.some((card) => {
-            const requiredInputs = [
-                ...card.querySelectorAll("[required]")
-            ];
-
-            return requiredInputs.some(
-                (input) => !input.value.trim()
-            );
-        });
-
-        if (hasEmptyField) {
-            professionalsError.textContent =
-                "Preencha os dados dos profissionais.";
-
-            return false;
-        }
-
-        professionalsError.textContent = "";
-        return true;
-    }
-
-    function validateSchedule() {
-        const activeDays = [
-            ...scheduleList.querySelectorAll(
-                ".schedule-day-checkbox:checked"
-            )
-        ];
-
-        const scheduleError = document.querySelector(
-            "#schedule-error"
-        );
-
-        if (activeDays.length === 0) {
-            scheduleError.textContent =
-                "Selecione pelo menos um dia de funcionamento.";
-
-            return false;
-        }
-
-        scheduleError.textContent = "";
-        return true;
-    }
-
-    function validateSlug() {
-        const value = slugInput.value.trim();
-
-        const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-
-        if (!value) {
-            slugStatus.textContent = "Escolha um link.";
-            slugStatus.classList.add("unavailable");
-            return false;
-        }
-
-        if (!slugPattern.test(value)) {
-            slugStatus.textContent =
-                "Use somente letras, números e hífens.";
-
-            slugStatus.classList.add("unavailable");
-            return false;
-        }
-
-        slugStatus.textContent = "Link disponível";
-        slugStatus.classList.remove("unavailable");
-
-        return true;
-    }
-
-    function validateCurrentStep() {
-        const activeStep = steps.find(
-            (step) => Number(step.dataset.step) === currentStep
-        );
-
-        if (!activeStep) {
-            return false;
-        }
-
-        let isValid = validateStandardFields(activeStep);
-
-        if (currentStep === 3) {
-            isValid = validateServices() && isValid;
-        }
-
-        if (currentStep === 4) {
-            isValid = validateProfessionals() && isValid;
-        }
-
-        if (currentStep === 5) {
-            isValid = validateSchedule() && isValid;
-        }
-
-        if (currentStep === 7) {
-            isValid = validateSlug() && isValid;
-
-            if (!termsInput.checked) {
-                termsError.textContent =
-                    "Você precisa aceitar os termos.";
-
-                isValid = false;
-            } else {
-                termsError.textContent = "";
-            }
-        }
-
-        return isValid;
+        return words
+            .map((word) => word.charAt(0).toUpperCase())
+            .join("");
     }
 
     function sanitizeSlug(text) {
@@ -386,13 +203,290 @@ document.addEventListener("DOMContentLoaded", () => {
         )}-${numbers.slice(7)}`;
     }
 
+    function readImage(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = () => reject(
+                new Error("Não foi possível ler a imagem.")
+            );
+
+            reader.readAsDataURL(file);
+        });
+    }
+
+    function updateStep() {
+        steps.forEach((step) => {
+            step.classList.toggle(
+                "active",
+                Number(step.dataset.step) === currentStep
+            );
+        });
+
+        const activeStep = steps.find(
+            (step) => Number(step.dataset.step) === currentStep
+        );
+
+        progressStep.textContent =
+            `Etapa ${currentStep} de ${steps.length}`;
+
+        progressTitle.textContent =
+            activeStep?.dataset.title || "";
+
+        progressFill.style.width =
+            `${(currentStep / steps.length) * 100}%`;
+
+        progressDots.forEach((dot) => {
+            const number = Number(dot.dataset.progressDot);
+
+            dot.classList.toggle("active", number === currentStep);
+            dot.classList.toggle("completed", number < currentStep);
+        });
+
+        sidebarSteps.forEach((item) => {
+            const number = Number(item.dataset.sidebarStep);
+
+            item.classList.toggle("active", number === currentStep);
+            item.classList.toggle("completed", number < currentStep);
+        });
+
+        backButton.disabled = currentStep === 1;
+        nextButton.hidden = currentStep === steps.length;
+        finishButton.hidden = currentStep !== steps.length;
+
+        if (currentStep === 7) {
+            renderProfessionalImages();
+            updateImageFallbacks();
+        }
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+
+    function showFieldError(field, message) {
+        const group = field.closest(".form-group");
+
+        if (!group) {
+            return;
+        }
+
+        group.classList.add("invalid");
+
+        const error = group.querySelector(".field-error");
+
+        if (error) {
+            error.textContent = message;
+        }
+    }
+
+    function clearFieldError(field) {
+        const group = field.closest(".form-group");
+
+        if (!group) {
+            return;
+        }
+
+        group.classList.remove("invalid");
+
+        const error = group.querySelector(".field-error");
+
+        if (error) {
+            error.textContent = "";
+        }
+    }
+
+    function validateStandardFields(step) {
+        const fields = [
+            ...step.querySelectorAll("[required]")
+        ].filter((field) => field.type !== "checkbox");
+
+        let valid = true;
+
+        fields.forEach((field) => {
+            clearFieldError(field);
+
+            const value = field.value.trim();
+
+            if (!value) {
+                showFieldError(field, "Preencha este campo.");
+                valid = false;
+                return;
+            }
+
+            if (
+                field.type === "email" &&
+                !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+            ) {
+                showFieldError(field, "Digite um e-mail válido.");
+                valid = false;
+            }
+
+            if (
+                field.id === "owner-password" &&
+                value.length < 6
+            ) {
+                showFieldError(
+                    field,
+                    "A senha deve ter pelo menos 6 caracteres."
+                );
+
+                valid = false;
+            }
+        });
+
+        return valid;
+    }
+
+    function validateServices() {
+        const cards = [
+            ...servicesList.querySelectorAll(".service-card")
+        ];
+
+        const error = document.querySelector("#services-error");
+
+        if (!cards.length) {
+            error.textContent = "Adicione pelo menos um serviço.";
+            return false;
+        }
+
+        const incomplete = cards.some((card) => {
+            return [...card.querySelectorAll("[required]")].some(
+                (input) => !input.value.trim()
+            );
+        });
+
+        if (incomplete) {
+            error.textContent =
+                "Preencha todas as informações dos serviços.";
+
+            return false;
+        }
+
+        error.textContent = "";
+        return true;
+    }
+
+    function validateProfessionals() {
+        const cards = [
+            ...professionalsList.querySelectorAll(
+                ".professional-card"
+            )
+        ];
+
+        const error = document.querySelector(
+            "#professionals-error"
+        );
+
+        if (!cards.length) {
+            error.textContent =
+                "Adicione pelo menos um profissional.";
+
+            return false;
+        }
+
+        const incomplete = cards.some((card) => {
+            return [...card.querySelectorAll("[required]")].some(
+                (input) => !input.value.trim()
+            );
+        });
+
+        if (incomplete) {
+            error.textContent =
+                "Preencha os dados dos profissionais.";
+
+            return false;
+        }
+
+        error.textContent = "";
+        return true;
+    }
+
+    function validateSchedule() {
+        const activeDays = scheduleList.querySelectorAll(
+            ".schedule-day-checkbox:checked"
+        );
+
+        const error = document.querySelector("#schedule-error");
+
+        if (!activeDays.length) {
+            error.textContent =
+                "Selecione pelo menos um dia de funcionamento.";
+
+            return false;
+        }
+
+        error.textContent = "";
+        return true;
+    }
+
+    function validateSlug() {
+        const value = slugInput.value.trim();
+        const pattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+        if (!value) {
+            slugStatus.textContent = "Escolha um link.";
+            slugStatus.classList.add("unavailable");
+            return false;
+        }
+
+        if (!pattern.test(value)) {
+            slugStatus.textContent =
+                "Use somente letras, números e hífens.";
+
+            slugStatus.classList.add("unavailable");
+            return false;
+        }
+
+        slugStatus.textContent = "Link disponível";
+        slugStatus.classList.remove("unavailable");
+
+        return true;
+    }
+
+    function validateCurrentStep() {
+        const activeStep = steps.find(
+            (step) => Number(step.dataset.step) === currentStep
+        );
+
+        let valid = validateStandardFields(activeStep);
+
+        if (currentStep === 3) {
+            valid = validateServices() && valid;
+        }
+
+        if (currentStep === 4) {
+            valid = validateProfessionals() && valid;
+        }
+
+        if (currentStep === 5) {
+            valid = validateSchedule() && valid;
+        }
+
+        if (currentStep === 8) {
+            valid = validateSlug() && valid;
+
+            if (!termsInput.checked) {
+                termsError.textContent =
+                    "Você precisa aceitar os termos.";
+
+                valid = false;
+            } else {
+                termsError.textContent = "";
+            }
+        }
+
+        return valid;
+    }
+
     function createService(service = {}) {
-        serviceCount += 1;
+        serviceCounter += 1;
 
         const card = document.createElement("article");
 
         card.className = "dynamic-card service-card";
-        card.dataset.serviceId = serviceCount;
 
         card.innerHTML = `
             <input
@@ -401,7 +495,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 placeholder="Nome do serviço"
                 value="${service.name || ""}"
                 required
-                aria-label="Nome do serviço"
             >
 
             <input
@@ -412,14 +505,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 step="0.01"
                 value="${service.price || ""}"
                 required
-                aria-label="Preço do serviço"
             >
 
-            <select
-                class="service-duration"
-                required
-                aria-label="Duração do serviço"
-            >
+            <select class="service-duration" required>
                 <option value="">Duração</option>
                 <option value="20">20 min</option>
                 <option value="30">30 min</option>
@@ -439,32 +527,26 @@ document.addEventListener("DOMContentLoaded", () => {
             </button>
         `;
 
-        const durationSelect = card.querySelector(
-            ".service-duration"
-        );
-
         if (service.duration) {
-            durationSelect.value = String(service.duration);
+            card.querySelector(".service-duration").value =
+                String(service.duration);
         }
 
         card
             .querySelector(".remove-item-button")
-            .addEventListener("click", () => {
-                card.remove();
-            });
+            .addEventListener("click", () => card.remove());
 
         servicesList.appendChild(card);
     }
 
     function createProfessional(professional = {}) {
-        professionalCount += 1;
+        professionalCounter += 1;
 
+        const id = `professional-${professionalCounter}`;
         const card = document.createElement("article");
 
-        card.className =
-            "dynamic-card professional-card";
-
-        card.dataset.professionalId = professionalCount;
+        card.className = "dynamic-card professional-card";
+        card.dataset.professionalId = id;
 
         card.innerHTML = `
             <input
@@ -473,7 +555,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 placeholder="Nome do profissional"
                 value="${professional.name || ""}"
                 required
-                aria-label="Nome do profissional"
             >
 
             <input
@@ -482,7 +563,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 placeholder="Especialidade"
                 value="${professional.specialty || ""}"
                 required
-                aria-label="Especialidade do profissional"
             >
 
             <button
@@ -497,6 +577,7 @@ document.addEventListener("DOMContentLoaded", () => {
         card
             .querySelector(".remove-item-button")
             .addEventListener("click", () => {
+                delete professionalImages[id];
                 card.remove();
             });
 
@@ -504,28 +585,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function createSchedule() {
-        scheduleList.innerHTML = "";
-
-        days.forEach((day) => {
+        days.forEach(([key, label, active]) => {
             const item = document.createElement("article");
 
-            item.className = `schedule-item ${
-                day.active ? "" : "disabled"
-            }`;
+            item.className =
+                `schedule-item ${active ? "" : "disabled"}`;
 
-            item.dataset.day = day.key;
+            item.dataset.day = key;
 
             item.innerHTML = `
                 <label class="schedule-day">
                     <input
                         type="checkbox"
                         class="schedule-day-checkbox"
-                        ${day.active ? "checked" : ""}
+                        ${active ? "checked" : ""}
                     >
 
                     <span class="day-checkbox"></span>
-
-                    <strong>${day.label}</strong>
+                    <strong>${label}</strong>
                 </label>
 
                 <div class="schedule-time">
@@ -533,7 +610,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         type="time"
                         class="schedule-opening"
                         value="08:00"
-                        aria-label="Horário de abertura"
                     >
 
                     <span>até</span>
@@ -542,7 +618,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         type="time"
                         class="schedule-closing"
                         value="18:00"
-                        aria-label="Horário de fechamento"
                     >
                 </div>
             `;
@@ -562,33 +637,201 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    function getServices() {
-        return [
-            ...servicesList.querySelectorAll(".service-card")
-        ].map((card) => ({
-            name: card.querySelector(".service-name").value.trim(),
-            price: Number(
-                card.querySelector(".service-price").value
-            ),
-            duration: Number(
-                card.querySelector(".service-duration").value
-            )
-        }));
-    }
-
     function getProfessionals() {
         return [
             ...professionalsList.querySelectorAll(
                 ".professional-card"
             )
+        ].map((card) => {
+            const id = card.dataset.professionalId;
+
+            return {
+                id,
+                name: card
+                    .querySelector(".professional-name")
+                    .value.trim(),
+
+                specialty: card
+                    .querySelector(".professional-specialty")
+                    .value.trim(),
+
+                image: professionalImages[id] || ""
+            };
+        });
+    }
+
+    function renderProfessionalImages() {
+        const professionals = getProfessionals();
+
+        professionalImagesList.innerHTML = "";
+
+        professionals.forEach((professional) => {
+            const card = document.createElement("article");
+            const initials = getInitials(professional.name);
+
+            card.className = "professional-image-card";
+
+            card.innerHTML = `
+                <div class="professional-avatar">
+                    ${
+                        professional.image
+                            ? `<img src="${professional.image}" alt="${professional.name}">`
+                            : `<span>${initials}</span>`
+                    }
+                </div>
+
+                <div>
+                    <strong>
+                        ${professional.name || "Profissional"}
+                    </strong>
+
+                    <label>
+                        Escolher foto
+
+                        <input
+                            type="file"
+                            accept="image/png,image/jpeg,image/webp"
+                        >
+                    </label>
+                </div>
+            `;
+
+            const input = card.querySelector("input");
+
+            input.addEventListener("change", async () => {
+                const file = input.files?.[0];
+
+                if (!file) {
+                    return;
+                }
+
+                try {
+                    professionalImages[professional.id] =
+                        await readImage(file);
+
+                    renderProfessionalImages();
+                } catch (error) {
+                    alert(error.message);
+                }
+            });
+
+            professionalImagesList.appendChild(card);
+        });
+    }
+
+    function getSelectedTheme() {
+        return document.querySelector(
+            'input[name="theme"]:checked'
+        )?.value || "legacy";
+    }
+
+    function updateAutomaticBanner() {
+        const themeName = getSelectedTheme();
+        const theme = themes[themeName] || themes.legacy;
+
+        automaticBanner.style.setProperty(
+            "--banner-primary",
+            customColorInput.value || theme.primary
+        );
+
+        automaticBanner.style.setProperty(
+            "--banner-secondary",
+            theme.secondary
+        );
+
+        automaticBannerName.textContent =
+            barbershopNameInput.value.trim() || "Sua Barbearia";
+    }
+
+    function updateImageFallbacks() {
+        const name =
+            barbershopNameInput.value.trim() || "Sua Barbearia";
+
+        logoFallback.textContent = getInitials(name);
+        automaticBannerName.textContent = name;
+
+        updateAutomaticBanner();
+    }
+
+    function renderGallery() {
+        galleryPreviewGrid.innerHTML = "";
+
+        if (!galleryImages.length) {
+            galleryPreviewGrid.appendChild(emptyGallery);
+            emptyGallery.hidden = false;
+            return;
+        }
+
+        galleryImages.forEach((image, index) => {
+            const item = document.createElement("article");
+
+            item.className = "gallery-item";
+
+            item.innerHTML = `
+                <img src="${image}" alt="Imagem da galeria">
+
+                <button
+                    type="button"
+                    aria-label="Remover imagem"
+                >
+                    ×
+                </button>
+            `;
+
+            item.querySelector("button").addEventListener(
+                "click",
+                () => {
+                    galleryImages.splice(index, 1);
+                    renderGallery();
+                }
+            );
+
+            galleryPreviewGrid.appendChild(item);
+        });
+    }
+
+    function updateOrderSummary() {
+        const billing = document.querySelector(
+            'input[name="billing"]:checked'
+        )?.value || "monthly";
+
+        const hasSetup = professionalSetupInput.checked;
+
+        const planPrice = billing === "annual" ? 229.9 : 22.9;
+        const total = planPrice + (hasSetup ? 29.9 : 0);
+
+        summaryPlan.textContent =
+            billing === "annual"
+                ? "Plano anual"
+                : "Plano mensal";
+
+        summarySetup.textContent =
+            hasSetup ? "R$ 29,90" : "Não adicionada";
+
+        summaryTotal.textContent = total.toLocaleString(
+            "pt-BR",
+            {
+                style: "currency",
+                currency: "BRL"
+            }
+        );
+    }
+
+    function getServices() {
+        return [
+            ...servicesList.querySelectorAll(".service-card")
         ].map((card) => ({
             name: card
-                .querySelector(".professional-name")
+                .querySelector(".service-name")
                 .value.trim(),
 
-            specialty: card
-                .querySelector(".professional-specialty")
-                .value.trim()
+            price: Number(
+                card.querySelector(".service-price").value
+            ),
+
+            duration: Number(
+                card.querySelector(".service-duration").value
+            )
         }));
     }
 
@@ -612,44 +855,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }));
     }
 
-    function updateOrderSummary() {
-        const billingInput = document.querySelector(
+    function collectData() {
+        const billing = document.querySelector(
             'input[name="billing"]:checked'
-        );
-
-        const billing = billingInput?.value || "monthly";
-        const hasSetup = professionalSetup.checked;
-
-        const planValue =
-            billing === "annual" ? 229.9 : 22.9;
-
-        const total = planValue + (hasSetup ? 29.9 : 0);
-
-        summaryPlan.textContent =
-            billing === "annual"
-                ? "Plano anual"
-                : "Plano mensal";
-
-        summarySetup.textContent =
-            hasSetup ? "R$ 29,90" : "Não adicionada";
-
-        summaryTotal.textContent = total.toLocaleString(
-            "pt-BR",
-            {
-                style: "currency",
-                currency: "BRL"
-            }
-        );
-    }
-
-    function collectFormData() {
-        const selectedTheme = document.querySelector(
-            'input[name="theme"]:checked'
-        );
-
-        const selectedBilling = document.querySelector(
-            'input[name="billing"]:checked'
-        );
+        )?.value || "monthly";
 
         return {
             owner: {
@@ -668,7 +877,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             barbershop: {
                 name: barbershopNameInput.value.trim(),
-
                 description: descriptionInput.value.trim(),
 
                 city: document
@@ -692,38 +900,54 @@ document.addEventListener("DOMContentLoaded", () => {
                     .value.trim(),
 
                 slug: slugInput.value.trim(),
-
                 services: getServices(),
-
                 professionals: getProfessionals(),
-
                 schedule: getSchedule(),
 
                 appearance: {
-                    theme: selectedTheme?.value || "legacy",
+                    theme: getSelectedTheme(),
                     customColor: customColorInput.value
+                },
+
+                images: {
+                    logo: logoData,
+                    banner: bannerData,
+                    automaticBanner: !bannerData,
+                    gallery: galleryImages
                 }
             },
 
             subscription: {
-                billing: selectedBilling?.value || "monthly",
-                professionalSetup: professionalSetup.checked
+                billing,
+                professionalSetup:
+                    professionalSetupInput.checked
             },
 
             createdAt: new Date().toISOString()
         };
     }
 
-    function saveRegistration(data) {
-        localStorage.setItem(
-            "barberflowRegistration",
-            JSON.stringify(data)
-        );
+    function saveData(data) {
+        try {
+            localStorage.setItem(
+                "barberflowRegistration",
+                JSON.stringify(data)
+            );
 
-        localStorage.setItem(
-            `barberflowBarbershop:${data.barbershop.slug}`,
-            JSON.stringify(data.barbershop)
-        );
+            localStorage.setItem(
+                `barberflowBarbershop:${data.barbershop.slug}`,
+                JSON.stringify(data.barbershop)
+            );
+
+            return true;
+        } catch (error) {
+            alert(
+                "As imagens ficaram grandes demais para o navegador. " +
+                "Tente adicionar menos fotos ou imagens menores."
+            );
+
+            return false;
+        }
     }
 
     nextButton.addEventListener("click", () => {
@@ -751,31 +975,31 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        const registrationData = collectFormData();
+        const data = collectData();
 
-        saveRegistration(registrationData);
+        if (!saveData(data)) {
+            return;
+        }
 
-        const slug = registrationData.barbershop.slug;
+        const slug = data.barbershop.slug;
 
         createdLinkText.textContent =
             `barberflow.com/${slug}`;
 
         openCreatedPage.href =
-            `./barbearia.html?barbearia=${encodeURIComponent(
-                slug
-            )}`;
+            `./barbearia.html?barbearia=${encodeURIComponent(slug)}`;
 
         successModal.classList.add("open");
         successModal.setAttribute("aria-hidden", "false");
     });
 
-    addServiceButton.addEventListener("click", () => {
-        createService();
-    });
+    document
+        .querySelector("#add-service-button")
+        .addEventListener("click", () => createService());
 
-    addProfessionalButton.addEventListener("click", () => {
-        createProfessional();
-    });
+    document
+        .querySelector("#add-professional-button")
+        .addEventListener("click", () => createProfessional());
 
     barbershopNameInput.addEventListener("input", () => {
         if (!slugWasEdited) {
@@ -785,6 +1009,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             validateSlug();
         }
+
+        updateImageFallbacks();
     });
 
     slugInput.addEventListener("input", () => {
@@ -807,28 +1033,21 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     document
-        .querySelectorAll(".password-toggle")
-        .forEach((button) => {
-            button.addEventListener("click", () => {
-                const input = document.querySelector(
-                    `#${button.dataset.passwordTarget}`
-                );
+        .querySelector("#password-toggle")
+        .addEventListener("click", (event) => {
+            const passwordInput = document.querySelector(
+                "#owner-password"
+            );
 
-                if (!input) {
-                    return;
-                }
+            const showing = passwordInput.type === "text";
 
-                const shouldShow =
-                    input.type === "password";
+            passwordInput.type = showing
+                ? "password"
+                : "text";
 
-                input.type = shouldShow
-                    ? "text"
-                    : "password";
-
-                button.textContent = shouldShow
-                    ? "Ocultar"
-                    : "Mostrar";
-            });
+            event.currentTarget.textContent = showing
+                ? "Mostrar"
+                : "Ocultar";
         });
 
     document
@@ -844,12 +1063,99 @@ document.addEventListener("DOMContentLoaded", () => {
                 input
                     .closest(".theme-option")
                     .classList.add("active");
+
+                const theme = themes[input.value];
+
+                customColorInput.value = theme.primary;
+                customColorValue.textContent =
+                    theme.primary.toUpperCase();
+
+                updateAutomaticBanner();
             });
         });
 
     customColorInput.addEventListener("input", () => {
         customColorValue.textContent =
             customColorInput.value.toUpperCase();
+
+        updateAutomaticBanner();
+    });
+
+    logoInput.addEventListener("change", async () => {
+        const file = logoInput.files?.[0];
+
+        if (!file) {
+            return;
+        }
+
+        try {
+            logoData = await readImage(file);
+
+            logoPreviewImage.src = logoData;
+            logoPreviewImage.hidden = false;
+            logoFallback.hidden = true;
+            removeLogoButton.hidden = false;
+        } catch (error) {
+            alert(error.message);
+        }
+    });
+
+    removeLogoButton.addEventListener("click", () => {
+        logoData = "";
+        logoInput.value = "";
+        logoPreviewImage.src = "";
+        logoPreviewImage.hidden = true;
+        logoFallback.hidden = false;
+        removeLogoButton.hidden = true;
+    });
+
+    bannerInput.addEventListener("change", async () => {
+        const file = bannerInput.files?.[0];
+
+        if (!file) {
+            return;
+        }
+
+        try {
+            bannerData = await readImage(file);
+
+            bannerPreviewImage.src = bannerData;
+            bannerPreviewImage.hidden = false;
+            automaticBanner.hidden = true;
+            removeBannerButton.hidden = false;
+        } catch (error) {
+            alert(error.message);
+        }
+    });
+
+    removeBannerButton.addEventListener("click", () => {
+        bannerData = "";
+        bannerInput.value = "";
+        bannerPreviewImage.src = "";
+        bannerPreviewImage.hidden = true;
+        automaticBanner.hidden = false;
+        removeBannerButton.hidden = true;
+
+        updateAutomaticBanner();
+    });
+
+    galleryInput.addEventListener("change", async () => {
+        const files = [...galleryInput.files].slice(
+            0,
+            Math.max(0, 8 - galleryImages.length)
+        );
+
+        for (const file of files) {
+            try {
+                const image = await readImage(file);
+                galleryImages.push(image);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        galleryInput.value = "";
+        renderGallery();
     });
 
     document
@@ -861,7 +1167,7 @@ document.addEventListener("DOMContentLoaded", () => {
             );
         });
 
-    professionalSetup.addEventListener(
+    professionalSetupInput.addEventListener(
         "change",
         updateOrderSummary
     );
@@ -901,6 +1207,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     createSchedule();
+    renderGallery();
     updateOrderSummary();
+    updateAutomaticBanner();
     updateStep();
 });
