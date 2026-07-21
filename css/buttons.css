@@ -1,0 +1,116 @@
+.button {
+    min-height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 25px;
+    border-radius: 999px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+}
+
+.button-primary {
+    background-color: var(--primary);
+    color: var(--text-dark);
+}
+
+.button-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.button-secondary {
+    border: 1px solid var(--border-light);
+    background-color: rgba(255, 255, 255, 0.04);
+    color: var(--text);
+}
+
+.button-secondary:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.button-light {
+    background-color: var(--text);
+    color: var(--text-dark);
+}
+
+.header-button {
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    border-radius: 999px;
+    background-color: #ffffff;
+    color: #111111;
+    font-size: 0.88rem;
+    font-weight: 700;
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.header-button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.card-button {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+    border-radius: 999px;
+    background-color: #ffffff;
+    color: #111111;
+    font-size: 0.88rem;
+    font-weight: 700;
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.card-button:hover {
+    transform: translateY(-2px);
+    opacity: 0.92;
+}
+
+body.light-mode .button-secondary {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+body.light-mode .button-secondary:hover {
+    border-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.07);
+}
+
+body.light-mode .header-button,
+body.light-mode .card-button,
+body.light-mode .button-light {
+    background-color: #111111 !important;
+    color: #ffffff !important;
+}
+
+body.light-mode .header-button:hover,
+body.light-mode .card-button:hover,
+body.light-mode .button-light:hover {
+    background-color: #222222 !important;
+    color: #ffffff !important;
+}
+
+body.light-mode .header-button *,
+body.light-mode .card-button *,
+body.light-mode .button-light * {
+    color: #ffffff !important;
+}

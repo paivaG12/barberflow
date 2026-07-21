@@ -1,0 +1,86 @@
+.features {
+    padding: 120px 0;
+    background-color: var(--background-soft);
+}
+
+.section-heading {
+    max-width: 720px;
+    margin-bottom: 60px;
+}
+
+.section-heading h2,
+.about h2,
+.booking-content h2 {
+    font-size: clamp(2rem, 5vw, 3.7rem);
+    line-height: 1.05;
+    letter-spacing: -0.055em;
+}
+
+.section-heading p {
+    max-width: 610px;
+    margin-top: 22px;
+    color: var(--text-soft);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.about {
+    padding: 120px 0;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 0.7fr;
+    align-items: end;
+    gap: 80px;
+}
+
+.about-content > p {
+    color: var(--text-soft);
+    font-size: 1.02rem;
+}
+
+.booking-call {
+    padding: 0 0 80px;
+}
+
+.booking-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 60px;
+    border-radius: var(--radius-large);
+    background-color: var(--primary);
+    color: var(--text-dark);
+}
+
+.booking-content > div > span {
+    color: rgba(17, 17, 17, 0.65);
+}
+
+.booking-content p {
+    margin-top: 16px;
+    color: rgba(17, 17, 17, 0.68);
+}
+
+.footer {
+    border-top: 1px solid var(--border);
+}
+
+.footer-content {
+    min-height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.footer-content p {
+    color: var(--text-soft);
+    font-size: 0.82rem;
+}
