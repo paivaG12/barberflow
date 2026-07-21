@@ -754,3 +754,10 @@ body.light-mode .header {
 body.light-mode .hero-card {
     background-color: #ffffff;
 }
+body.light-mode .header-button {
+    background-color: #111111;
+    color: #ffffff;
+}
+body.light-mode .header-button:hover {
+    background-color: #2a2a2a;
+}
