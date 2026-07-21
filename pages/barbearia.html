@@ -8,11 +8,19 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>BarberFlow</title>
+    <meta
+        name="description"
+        content="Conheça os serviços, profissionais e horários disponíveis da barbearia."
+    >
 
-   <link rel="stylesheet" href="../css/global.css">
-<link rel="stylesheet" href="../css/barbershop.css">
+    <title>Sua Barbearia | BarberFlow</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/barbershop.css">
+
     <script src="../js/theme.js" defer></script>
+    <script src="../js/database.js" defer></script>
+    <script src="../js/barbershop.js" defer></script>
 </head>
 
 <body>
@@ -24,204 +32,451 @@
 
             <nav class="navigation">
                 <a href="#inicio">Início</a>
-                <a href="#recursos">Recursos</a>
-                <a href="#sobre">Sobre</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#trabalhos">Trabalhos</a>
+                <a href="#equipe">Equipe</a>
+                <a href="#contato">Contato</a>
             </nav>
 
             <div class="header-actions">
-    <button
-        type="button"
-        class="theme-button"
-        id="theme-button"
-        aria-label="Ativar modo claro"
-    >
-        <span id="theme-icon">☀</span>
-    </button>
+                <button
+                    type="button"
+                    class="theme-button"
+                    id="theme-button"
+                    aria-label="Alterar tema"
+                >
+                    <span id="theme-icon">☀</span>
+                </button>
 
-    <a href="#agendar" class="header-button">
-        Agendar
-    </a>
-</div>
+                <a
+                    href="#agendamento"
+                    class="header-button"
+                >
+                    Agendar
+                </a>
+            </div>
         </div>
     </header>
 
-    <main>
-        <section class="hero" id="inicio">
-            <div class="container hero-content">
-                <div class="hero-text">
-                    <span class="hero-label">
-                        Agendamento simples e rápido
-                    </span>
+    <main id="barbershop-page">
+        <section class="shop-hero" id="inicio">
+            <div
+                class="shop-hero-background"
+                id="shop-banner"
+            ></div>
 
-                    <h1 id="hero-title">
-                        Seu próximo corte começa aqui.
-                    </h1>
+            <div class="shop-hero-overlay"></div>
 
-                    <p>
-                        Escolha o serviço, o profissional e o melhor horário
-                        para você. Tudo de forma simples, rápida e moderna.
-                    </p>
-
-                    <div class="hero-actions">
-                        <a href="#agendar" class="button button-primary">
-                            Agendar horário
-                        </a>
-
-                        <a href="#recursos" class="button button-secondary">
-                            Conhecer a barbearia
-                        </a>
+            <div class="container shop-hero-content">
+                <div class="shop-identity">
+                    <div class="shop-logo" id="shop-logo">
+                        SB
                     </div>
 
-                    <div class="hero-information">
-                        <div>
-                            <strong>+500</strong>
-                            <span>clientes atendidos</span>
+                    <div class="shop-heading">
+                        <span class="shop-status" id="shop-status">
+                            Aberto hoje
+                        </span>
+
+                        <h1 id="shop-name">
+                            Sua Barbearia
+                        </h1>
+
+                        <p id="shop-description">
+                            Cortes modernos, barba e cuidados com o visual
+                            em um ambiente confortável e profissional.
+                        </p>
+
+                        <div class="shop-summary">
+                            <span id="shop-location">
+                                Sua cidade
+                            </span>
+
+                            <span id="shop-hours">
+                                08:00 às 20:00
+                            </span>
                         </div>
 
-                        <div>
-                            <strong>4,9</strong>
-                            <span>avaliação média</span>
-                        </div>
+                        <div class="shop-hero-actions">
+                            <a
+                                href="#agendamento"
+                                class="button button-primary"
+                            >
+                                Agendar horário
+                            </a>
 
-                        <div>
-                            <strong>100%</strong>
-                            <span>agendamento online</span>
+                            <a
+                                href="#trabalhos"
+                                class="button button-secondary"
+                            >
+                                Ver trabalhos
+                            </a>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="hero-card">
-                    <div class="card-top">
-                        <div>
-                            <span class="card-label">Próximo horário</span>
-                            <h2>Hoje, 15:30</h2>
-                        </div>
+        <section class="quick-info-section">
+            <div class="container quick-info-grid">
+                <article class="quick-info-card">
+                    <span>Horário de hoje</span>
 
-                        <span class="status">Disponível</span>
-                    </div>
+                    <strong id="today-hours">
+                        08:00 às 20:00
+                    </strong>
+                </article>
 
-                    <div class="professional">
-                        <div class="professional-avatar">
-                            JP
-                        </div>
+                <article class="quick-info-card">
+                    <span>Serviços</span>
 
-                        <div>
-                            <strong>João Pedro</strong>
-                            <span>Barbeiro profissional</span>
-                        </div>
-                    </div>
+                    <strong id="services-count">
+                        4 opções
+                    </strong>
+                </article>
 
-                    <div class="service">
-                        <div class="service-icon">
-                            ✂
-                        </div>
+                <article class="quick-info-card">
+                    <span>Profissionais</span>
 
-                        <div class="service-information">
-                            <strong>Corte masculino</strong>
-                            <span>Duração aproximada: 40 minutos</span>
-                        </div>
+                    <strong id="professionals-count">
+                        2 profissionais
+                    </strong>
+                </article>
 
-                        <strong class="service-price">
-                            R$ 35
+                <article class="quick-info-card">
+                    <span>Atendimento</span>
+
+                    <strong>
+                        Com hora marcada
+                    </strong>
+                </article>
+            </div>
+        </section>
+
+        <section class="shop-section" id="servicos">
+            <div class="container">
+                <div class="section-heading">
+                    <span>Serviços</span>
+
+                    <h2>
+                        Escolha o serviço ideal para você
+                    </h2>
+
+                    <p>
+                        Confira valores e duração média de cada atendimento.
+                    </p>
+                </div>
+
+                <div class="services-grid" id="services-list">
+                    <!-- Os serviços serão adicionados pelo JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <section
+            class="shop-section shop-section-soft"
+            id="trabalhos"
+        >
+            <div class="container">
+                <div class="section-heading">
+                    <span>Trabalhos recentes</span>
+
+                    <h2>
+                        Conheça alguns dos nossos serviços
+                    </h2>
+
+                    <p>
+                        Fotos de cortes, barba e outros trabalhos realizados.
+                    </p>
+                </div>
+
+                <div class="gallery-grid" id="gallery-list">
+                    <!-- As fotos serão adicionadas pelo JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <section class="shop-section" id="equipe">
+            <div class="container">
+                <div class="section-heading">
+                    <span>Equipe</span>
+
+                    <h2>
+                        Escolha seu profissional
+                    </h2>
+
+                    <p>
+                        Conheça quem fará seu atendimento.
+                    </p>
+                </div>
+
+                <div class="team-grid" id="team-list">
+                    <!-- Os profissionais serão adicionados pelo JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <section
+            class="shop-section shop-section-soft"
+            id="sobre"
+        >
+            <div class="container about-grid">
+                <div class="about-content">
+                    <span class="section-label">
+                        Sobre a barbearia
+                    </span>
+
+                    <h2 id="about-title">
+                        Atendimento, qualidade e cuidado
+                    </h2>
+
+                    <p id="about-text">
+                        Somos uma barbearia especializada em cortes
+                        masculinos, barba e cuidados com o visual.
+                        Nossa equipe oferece atendimento profissional
+                        em um ambiente confortável e moderno.
+                    </p>
+                </div>
+
+                <div class="about-information">
+                    <article>
+                        <span>Endereço</span>
+
+                        <strong id="about-address">
+                            Rua de exemplo, 100 — Centro
                         </strong>
+                    </article>
+
+                    <article>
+                        <span>Funcionamento</span>
+
+                        <strong id="about-hours">
+                            Segunda a sábado, das 08:00 às 20:00
+                        </strong>
+                    </article>
+
+                    <article>
+                        <span>Formas de pagamento</span>
+
+                        <strong id="payment-methods">
+                            Pix, dinheiro e cartão
+                        </strong>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="booking-section" id="agendamento">
+            <div class="container">
+                <div class="section-heading booking-heading">
+                    <span>Agendamento</span>
+
+                    <h2>
+                        Reserve seu horário
+                    </h2>
+
+                    <p>
+                        Escolha o serviço, o profissional, a data
+                        e um horário disponível.
+                    </p>
+                </div>
+
+                <form class="booking-form" id="booking-form">
+                    <div class="booking-grid">
+                        <div class="form-group">
+                            <label for="booking-service">
+                                Serviço
+                            </label>
+
+                            <select
+                                id="booking-service"
+                                name="service"
+                                required
+                            >
+                                <option value="">
+                                    Selecione um serviço
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="booking-professional">
+                                Profissional
+                            </label>
+
+                            <select
+                                id="booking-professional"
+                                name="professional"
+                                required
+                            >
+                                <option value="">
+                                    Selecione um profissional
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="booking-date">
+                                Data
+                            </label>
+
+                            <input
+                                type="date"
+                                id="booking-date"
+                                name="date"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="booking-time">
+                                Horário
+                            </label>
+
+                            <select
+                                id="booking-time"
+                                name="time"
+                                required
+                            >
+                                <option value="">
+                                    Selecione um horário
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customer-name">
+                                Seu nome
+                            </label>
+
+                            <input
+                                type="text"
+                                id="customer-name"
+                                name="customerName"
+                                placeholder="Digite seu nome"
+                                autocomplete="name"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customer-phone">
+                                WhatsApp
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="customer-phone"
+                                name="customerPhone"
+                                placeholder="(00) 00000-0000"
+                                autocomplete="tel"
+                                required
+                            >
+                        </div>
                     </div>
 
-                    <a href="#agendar" class="card-button">
-                        Reservar este horário
+                    <div class="booking-summary">
+                        <div>
+                            <span>Valor do serviço</span>
+
+                            <strong id="booking-price">
+                                Selecione um serviço
+                            </strong>
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="button button-primary booking-button"
+                        >
+                            Confirmar agendamento
+                        </button>
+                    </div>
+
+                    <p
+                        class="booking-message"
+                        id="booking-message"
+                        aria-live="polite"
+                    ></p>
+                </form>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contato">
+            <div class="container contact-content">
+                <div>
+                    <span class="section-label">
+                        Contato
+                    </span>
+
+                    <h2>
+                        Fale com a barbearia
+                    </h2>
+
+                    <p>
+                        Tire suas dúvidas, veja a localização
+                        ou acompanhe os trabalhos nas redes sociais.
+                    </p>
+                </div>
+
+                <div class="contact-actions">
+                    <a
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="button button-primary"
+                        id="whatsapp-link"
+                    >
+                        WhatsApp
+                    </a>
+
+                    <a
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="button button-secondary"
+                        id="instagram-link"
+                    >
+                        Instagram
+                    </a>
+
+                    <a
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="button button-secondary"
+                        id="maps-link"
+                    >
+                        Como chegar
                     </a>
                 </div>
             </div>
         </section>
-
-        <section class="features" id="recursos">
-            <div class="container">
-                <div class="section-heading">
-                    <span>Experiência completa</span>
-
-                    <h2>
-                        Tudo pensado para facilitar seu agendamento
-                    </h2>
-
-                    <p>
-                        Encontre os serviços, profissionais e horários disponíveis
-                        em poucos passos.
-                    </p>
-                </div>
-
-                <div class="features-grid">
-                    <article class="feature-card">
-                        <div class="feature-icon">01</div>
-
-                        <h3>Escolha o serviço</h3>
-
-                        <p>
-                            Consulte os serviços disponíveis, valores e duração
-                            antes de realizar seu agendamento.
-                        </p>
-                    </article>
-
-                    <article class="feature-card">
-                        <div class="feature-icon">02</div>
-
-                        <h3>Escolha o profissional</h3>
-
-                        <p>
-                            Veja os profissionais da equipe e selecione quem
-                            realizará o seu atendimento.
-                        </p>
-                    </article>
-
-                    <article class="feature-card">
-                        <div class="feature-icon">03</div>
-
-                        <h3>Escolha o horário</h3>
-
-                        <p>
-                            Confira os horários disponíveis e reserve o que
-                            funciona melhor para você.
-                        </p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="about" id="sobre">
-            <div class="container about-content">
-                <div>
-                    <span class="section-label">Sobre a plataforma</span>
-
-                    <h2>
-                        Um sistema profissional para barbearias modernas
-                    </h2>
-                </div>
-
-                <p>
-                    O BarberFlow está sendo desenvolvido para permitir que cada
-                    barbearia tenha sua própria página de agendamento, serviços,
-                    profissionais e horários disponíveis.
-                </p>
-            </div>
-        </section>
-
-        <section class="booking-call" id="agendar">
-            <div class="container booking-content">
-                <div>
-                    <span>Pronto para começar?</span>
-
-                    <h2>Agende seu próximo horário</h2>
-
-                    <p>
-                        A área completa de agendamento será desenvolvida nas
-                        próximas etapas.
-                    </p>
-                </div>
-
-                <button type="button" class="button button-light">
-                    Em breve
-                </button>
-            </div>
-        </section>
     </main>
+
+    <section
+        class="not-found-section"
+        id="not-found-section"
+        hidden
+    >
+        <div class="container not-found-content">
+            <span>BarberFlow</span>
+
+            <h1>
+                Barbearia não encontrada
+            </h1>
+
+            <p>
+                O link acessado não corresponde a uma barbearia cadastrada.
+            </p>
+
+            <a
+                href="../index.html"
+                class="button button-primary"
+            >
+                Voltar para o início
+            </a>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="container footer-content">
@@ -229,13 +484,10 @@
                 Barber<span>Flow</span>
             </a>
 
-            <p>
-                Sistema de agendamento para barbearias.
+            <p id="footer-shop-name">
+                Página criada com BarberFlow.
             </p>
         </div>
     </footer>
-    <script src="./js/theme.js" defer></script>
-<script src="../js/database.js"></script>
-<script src="../js/barbershop.js"></script>
 </body>
 </html>
