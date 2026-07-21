@@ -1042,33 +1042,28 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     form.addEventListener("submit", (event) => {
-        event.preventDefault();
+    event.preventDefault();
 
-        if (!validateCurrentStep()) {
-            return;
-        }
+    if (!validateCurrentStep()) {
+        return;
+    }
 
-        const data = collectData();
+    const data = collectData();
 
-        if (!saveData(data)) {
-            return;
-        }
-
-        const slug = data.barbershop.slug;
-
-        createdLinkText.textContent =
-            `barberflow.com/${slug}`;
-
-        openCreatedPage.href =
-            `./barbearia.html?barbearia=${encodeURIComponent(slug)}`;
-
-        successModal.classList.add("open");
-
-        successModal.setAttribute(
-            "aria-hidden",
-            "false"
+    try {
+        localStorage.setItem(
+            "barberflowPendingRegistration",
+            JSON.stringify(data)
         );
-    });
+
+        window.location.href = "./resumo.html";
+    } catch (error) {
+        alert(
+            "Não foi possível salvar o cadastro. " +
+            "Tente utilizar imagens menores."
+        );
+    }
+});
 
     document
         .querySelector("#add-service-button")

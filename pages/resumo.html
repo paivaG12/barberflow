@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Resumo do cadastro | BarberFlow</title>
+
+    <link rel="stylesheet" href="../css/checkout.css">
+
+    <script src="../js/checkout.js" defer></script>
+</head>
+
+<body data-page="summary">
+    <header class="checkout-header">
+        <div class="checkout-container header-content">
+            <a href="../index.html" class="checkout-logo">
+                Barber<span>Flow</span>
+            </a>
+
+            <div class="checkout-security">
+                <span>✓</span>
+                Ambiente seguro
+            </div>
+        </div>
+    </header>
+
+    <main class="checkout-main">
+        <div class="checkout-container">
+            <div class="checkout-progress">
+                <div class="progress-item active">
+                    <span>1</span>
+                    <strong>Resumo</strong>
+                </div>
+
+                <div class="progress-line"></div>
+
+                <div class="progress-item">
+                    <span>2</span>
+                    <strong>Pagamento</strong>
+                </div>
+
+                <div class="progress-line"></div>
+
+                <div class="progress-item">
+                    <span>3</span>
+                    <strong>Publicação</strong>
+                </div>
+            </div>
+
+            <div class="checkout-heading">
+                <span>Confira antes de continuar</span>
+
+                <h1>Resumo da sua barbearia</h1>
+
+                <p>
+                    Verifique suas informações. A página só será publicada
+                    depois da confirmação do pagamento.
+                </p>
+            </div>
+
+            <div class="summary-layout">
+                <section class="summary-content">
+                    <article class="summary-card">
+                        <div class="summary-card-heading">
+                            <div>
+                                <span>Barbearia</span>
+                                <h2 id="summary-shop-name">
+                                    Sua barbearia
+                                </h2>
+                            </div>
+
+                            <a href="./cadastro.html">
+                                Editar
+                            </a>
+                        </div>
+
+                        <div class="shop-preview">
+                            <div
+                                class="shop-logo-preview"
+                                id="summary-logo"
+                            >
+                                BF
+                            </div>
+
+                            <div>
+                                <strong id="summary-business-name">
+                                    Sua barbearia
+                                </strong>
+
+                                <span id="summary-location">
+                                    Cidade e estado
+                                </span>
+
+                                <small id="summary-link">
+                                    barberflow.com/sua-barbearia
+                                </small>
+                            </div>
+                        </div>
+
+                        <p
+                            class="summary-description"
+                            id="summary-description"
+                        >
+                            Descrição da barbearia.
+                        </p>
+                    </article>
+
+                    <article class="summary-card">
+                        <div class="summary-card-heading">
+                            <div>
+                                <span>Serviços</span>
+                                <h2>Serviços cadastrados</h2>
+                            </div>
+
+                            <strong id="services-count">
+                                0 serviços
+                            </strong>
+                        </div>
+
+                        <div
+                            class="summary-list"
+                            id="summary-services"
+                        ></div>
+                    </article>
+
+                    <article class="summary-card">
+                        <div class="summary-card-heading">
+                            <div>
+                                <span>Equipe</span>
+                                <h2>Profissionais</h2>
+                            </div>
+
+                            <strong id="professionals-count">
+                                0 profissionais
+                            </strong>
+                        </div>
+
+                        <div
+                            class="summary-list"
+                            id="summary-professionals"
+                        ></div>
+                    </article>
+
+                    <article class="summary-card">
+                        <div class="summary-card-heading">
+                            <div>
+                                <span>Funcionamento</span>
+                                <h2>Horários escolhidos</h2>
+                            </div>
+                        </div>
+
+                        <div
+                            class="schedule-summary"
+                            id="summary-schedule"
+                        ></div>
+                    </article>
+                </section>
+
+                <aside class="order-card">
+                    <span class="order-label">
+                        Sua assinatura
+                    </span>
+
+                    <h2>BarberFlow completo</h2>
+
+                    <p>
+                        Todos os recursos para organizar e divulgar
+                        sua barbearia.
+                    </p>
+
+                    <div class="order-plan">
+                        <div>
+                            <span id="order-plan-name">
+                                Plano mensal
+                            </span>
+
+                            <small id="order-renewal">
+                                Renovação mensal
+                            </small>
+                        </div>
+
+                        <strong id="order-price">
+                            R$ 34,90
+                        </strong>
+                    </div>
+
+                    <ul class="order-features">
+                        <li>
+                            <span>✓</span>
+                            Página personalizada
+                        </li>
+
+                        <li>
+                            <span>✓</span>
+                            Agendamento online
+                        </li>
+
+                        <li>
+                            <span>✓</span>
+                            Gestão de clientes
+                        </li>
+
+                        <li>
+                            <span>✓</span>
+                            Serviços e equipe
+                        </li>
+
+                        <li>
+                            <span>✓</span>
+                            Link exclusivo
+                        </li>
+                    </ul>
+
+                    <div class="order-total">
+                        <span>Total</span>
+
+                        <strong id="order-total">
+                            R$ 34,90
+                        </strong>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="checkout-primary-button"
+                        id="continue-payment-button"
+                    >
+                        Continuar para pagamento
+                        <span>→</span>
+                    </button>
+
+                    <a
+                        href="./cadastro.html"
+                        class="checkout-secondary-link"
+                    >
+                        Voltar e editar cadastro
+                    </a>
+
+                    <small class="order-warning">
+                        Sua página ainda não será publicada.
+                    </small>
+                </aside>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

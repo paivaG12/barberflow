@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Pagamento | BarberFlow</title>
+
+    <link rel="stylesheet" href="../css/checkout.css">
+
+    <script src="../js/checkout.js" defer></script>
+</head>
+
+<body data-page="payment">
+    <header class="checkout-header">
+        <div class="checkout-container header-content">
+            <a href="../index.html" class="checkout-logo">
+                Barber<span>Flow</span>
+            </a>
+
+            <div class="checkout-security">
+                <span>✓</span>
+                Pagamento protegido
+            </div>
+        </div>
+    </header>
+
+    <main class="checkout-main">
+        <div class="checkout-container">
+            <div class="checkout-progress">
+                <div class="progress-item completed">
+                    <span>✓</span>
+                    <strong>Resumo</strong>
+                </div>
+
+                <div class="progress-line completed"></div>
+
+                <div class="progress-item active">
+                    <span>2</span>
+                    <strong>Pagamento</strong>
+                </div>
+
+                <div class="progress-line"></div>
+
+                <div class="progress-item">
+                    <span>3</span>
+                    <strong>Publicação</strong>
+                </div>
+            </div>
+
+            <div class="checkout-heading payment-heading">
+                <span>Ative sua assinatura</span>
+
+                <h1>Escolha como pagar</h1>
+
+                <p>
+                    Após a aprovação, sua conta será ativada e a página
+                    da barbearia será publicada.
+                </p>
+            </div>
+
+            <div class="payment-layout">
+                <section class="payment-content">
+                    <div class="payment-methods">
+                        <button
+                            type="button"
+                            class="payment-method active"
+                            data-payment-method="pix"
+                        >
+                            <span class="method-icon">PIX</span>
+
+                            <div>
+                                <strong>Pix</strong>
+
+                                <small>
+                                    Aprovação rápida
+                                </small>
+                            </div>
+                        </button>
+
+                        <button
+                            type="button"
+                            class="payment-method"
+                            data-payment-method="card"
+                        >
+                            <span class="method-icon">▣</span>
+
+                            <div>
+                                <strong>Cartão</strong>
+
+                                <small>
+                                    Crédito
+                                </small>
+                            </div>
+                        </button>
+                    </div>
+
+                    <article
+                        class="payment-panel active"
+                        data-payment-panel="pix"
+                    >
+                        <div class="panel-heading">
+                            <span>Pagamento por Pix</span>
+
+                            <h2>Finalize utilizando o Pix</h2>
+
+                            <p>
+                                Nesta versão do projeto, o pagamento será
+                                apenas simulado.
+                            </p>
+                        </div>
+
+                        <div class="pix-box">
+                            <div class="fake-qr-code">
+                                <span>BF</span>
+                            </div>
+
+                            <div>
+                                <strong>Pagamento instantâneo</strong>
+
+                                <p>
+                                    Em uma integração real, o QR Code seria
+                                    gerado pelo Mercado Pago ou Asaas.
+                                </p>
+
+                                <button
+                                    type="button"
+                                    id="copy-pix-button"
+                                    class="copy-button"
+                                >
+                                    Copiar código Pix
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article
+                        class="payment-panel"
+                        data-payment-panel="card"
+                    >
+                        <div class="panel-heading">
+                            <span>Cartão de crédito</span>
+
+                            <h2>Dados do cartão</h2>
+
+                            <p>
+                                Estes dados não serão enviados nem armazenados.
+                            </p>
+                        </div>
+
+                        <div class="payment-form">
+                            <div class="checkout-form-group full">
+                                <label for="card-name">
+                                    Nome impresso no cartão
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="card-name"
+                                    placeholder="NOME COMPLETO"
+                                >
+                            </div>
+
+                            <div class="checkout-form-group full">
+                                <label for="card-number">
+                                    Número do cartão
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="card-number"
+                                    placeholder="0000 0000 0000 0000"
+                                    maxlength="19"
+                                >
+                            </div>
+
+                            <div class="checkout-form-group">
+                                <label for="card-expiration">
+                                    Validade
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="card-expiration"
+                                    placeholder="MM/AA"
+                                    maxlength="5"
+                                >
+                            </div>
+
+                            <div class="checkout-form-group">
+                                <label for="card-cvv">
+                                    CVV
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="card-cvv"
+                                    placeholder="000"
+                                    maxlength="4"
+                                >
+                            </div>
+                        </div>
+                    </article>
+                </section>
+
+                <aside class="order-card payment-order-card">
+                    <span class="order-label">
+                        Resumo do pedido
+                    </span>
+
+                    <h2 id="payment-business-name">
+                        Sua barbearia
+                    </h2>
+
+                    <p>
+                        Assinatura BarberFlow completo
+                    </p>
+
+                    <div class="order-plan">
+                        <div>
+                            <span id="payment-plan-name">
+                                Plano mensal
+                            </span>
+
+                            <small id="payment-renewal">
+                                Renovação mensal
+                            </small>
+                        </div>
+
+                        <strong id="payment-price">
+                            R$ 34,90
+                        </strong>
+                    </div>
+
+                    <div class="order-total">
+                        <span>Total a pagar</span>
+
+                        <strong id="payment-total">
+                            R$ 34,90
+                        </strong>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="checkout-primary-button"
+                        id="finish-payment-button"
+                    >
+                        Simular pagamento
+                    </button>
+
+                    <a
+                        href="./resumo.html"
+                        class="checkout-secondary-link"
+                    >
+                        Voltar ao resumo
+                    </a>
+
+                    <div class="secure-payment-note">
+                        <span>✓</span>
+
+                        <p>
+                            Sua página será criada somente depois
+                            da aprovação do pagamento.
+                        </p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <div class="payment-modal" id="payment-modal">
+        <div class="payment-modal-card">
+            <div class="payment-spinner"></div>
+
+            <span>Processando</span>
+
+            <h2>Confirmando seu pagamento</h2>
+
+            <p>
+                Aguarde alguns segundos. Não feche esta página.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

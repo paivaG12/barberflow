@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Painel | BarberFlow</title>
+
+    <link rel="stylesheet" href="../css/checkout.css">
+
+    <script src="../js/checkout.js" defer></script>
+</head>
+
+<body data-page="dashboard">
+    <div class="dashboard-layout">
+        <aside class="dashboard-sidebar">
+            <a href="../index.html" class="checkout-logo">
+                Barber<span>Flow</span>
+            </a>
+
+            <nav class="dashboard-navigation">
+                <a href="#" class="active">
+                    <span>⌂</span>
+                    Visão geral
+                </a>
+
+                <a href="#">
+                    <span>□</span>
+                    Agenda
+                </a>
+
+                <a href="#">
+                    <span>♙</span>
+                    Clientes
+                </a>
+
+                <a href="#">
+                    <span>✂</span>
+                    Serviços
+                </a>
+
+                <a href="#">
+                    <span>♚</span>
+                    Equipe
+                </a>
+
+                <a href="#">
+                    <span>↗</span>
+                    Minha página
+                </a>
+            </nav>
+
+            <div class="dashboard-sidebar-footer">
+                <span>Plano ativo</span>
+                <strong id="dashboard-plan">
+                    BarberFlow mensal
+                </strong>
+            </div>
+        </aside>
+
+        <main class="dashboard-main">
+            <header class="dashboard-header">
+                <div>
+                    <span>Visão geral</span>
+
+                    <h1 id="dashboard-greeting">
+                        Bem-vindo!
+                    </h1>
+                </div>
+
+                <div
+                    class="dashboard-user"
+                    id="dashboard-user"
+                >
+                    BF
+                </div>
+            </header>
+
+            <section class="welcome-card">
+                <div class="welcome-content">
+                    <span class="welcome-badge">
+                        ✓ Página publicada
+                    </span>
+
+                    <h2 id="dashboard-business-name">
+                        Sua barbearia está pronta!
+                    </h2>
+
+                    <p>
+                        Agora você já pode compartilhar seu link
+                        e começar a receber agendamentos.
+                    </p>
+
+                    <div class="published-link">
+                        <span id="dashboard-public-link">
+                            barberflow.com/sua-barbearia
+                        </span>
+
+                        <button
+                            type="button"
+                            id="copy-public-link"
+                        >
+                            Copiar link
+                        </button>
+                    </div>
+
+                    <div class="welcome-actions">
+                        <a
+                            href="./barbearia.html"
+                            id="open-public-page"
+                            class="dashboard-primary-button"
+                        >
+                            Abrir minha página
+                        </a>
+
+                        <a
+                            href="#"
+                            class="dashboard-secondary-button"
+                        >
+                            Ver agenda
+                        </a>
+                    </div>
+                </div>
+
+                <div class="welcome-logo" id="dashboard-logo">
+                    BF
+                </div>
+            </section>
+
+            <section class="dashboard-metrics">
+                <article>
+                    <span>Agendamentos hoje</span>
+                    <strong>0</strong>
+                    <small>Comece divulgando seu link</small>
+                </article>
+
+                <article>
+                    <span>Clientes</span>
+                    <strong>0</strong>
+                    <small>Nenhum cliente cadastrado</small>
+                </article>
+
+                <article>
+                    <span>Serviços</span>
+                    <strong id="dashboard-services-count">
+                        0
+                    </strong>
+                    <small>Cadastrados na sua página</small>
+                </article>
+
+                <article>
+                    <span>Profissionais</span>
+                    <strong id="dashboard-team-count">
+                        0
+                    </strong>
+                    <small>Disponíveis para atendimento</small>
+                </article>
+            </section>
+
+            <section class="dashboard-grid">
+                <article class="dashboard-panel">
+                    <div class="dashboard-panel-heading">
+                        <div>
+                            <span>Primeiros passos</span>
+                            <h2>Comece a utilizar o BarberFlow</h2>
+                        </div>
+
+                        <strong>1 de 4</strong>
+                    </div>
+
+                    <div class="dashboard-checklist">
+                        <div class="completed">
+                            <span>✓</span>
+
+                            <div>
+                                <strong>Página publicada</strong>
+                                <small>Seu link já está disponível</small>
+                            </div>
+                        </div>
+
+                        <div>
+                            <span>2</span>
+
+                            <div>
+                                <strong>Compartilhe seu link</strong>
+                                <small>Instagram e WhatsApp</small>
+                            </div>
+                        </div>
+
+                        <div>
+                            <span>3</span>
+
+                            <div>
+                                <strong>Receba seu primeiro agendamento</strong>
+                                <small>Acompanhe pela agenda</small>
+                            </div>
+                        </div>
+
+                        <div>
+                            <span>4</span>
+
+                            <div>
+                                <strong>Cadastre seus clientes</strong>
+                                <small>Mantenha o histórico organizado</small>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="dashboard-panel">
+                    <div class="dashboard-panel-heading">
+                        <div>
+                            <span>Próximos horários</span>
+                            <h2>Agenda de hoje</h2>
+                        </div>
+                    </div>
+
+                    <div class="empty-dashboard-state">
+                        <span>□</span>
+
+                        <strong>Nenhum agendamento hoje</strong>
+
+                        <p>
+                            Quando um cliente realizar um agendamento,
+                            ele aparecerá aqui.
+                        </p>
+                    </div>
+                </article>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
